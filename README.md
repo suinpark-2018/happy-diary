@@ -63,23 +63,27 @@ happy_diary
       ├── main
       │   ├── java
       │   │   └── com
-      │   │       └── diary
+      │   │       └── happydiary
       │   │             ├── controller
       │   │             │   └── TestController.java
       │   │             ├── dao
       │   │             │   ├── TestDao.java
       │   │             │   └── TestDaoImpl.java
-      │   │             ├── domain
-      │   │             │   └── CategoryDto.java
+      │   │             ├── dto
       │   │             └── service
       │   │                 ├── TestService.java
       │   │                 └── TestServiceImpl.java
       │   ├── resources
       │   │   ├── mapper
       │   │   │   └── TestMapper.xml
+      │   │   ├── application.properties
       │   │   └── mybatis-config.xml
       │   └── webapp
       │       ├── WEB-INF
+      │       │   ├── resources
+      │       │   │   ├── css
+      │       │   │   ├── img
+      │       │   │   ├── js      
       │       │   ├── spring
       │       │   │   ├── appServlet
       │       │   │   │   └── servlet-context.xml
@@ -89,7 +93,6 @@ happy_diary
       │       │   └── web.xml
       │       └── resources
       └── test
-
 ```
 
 </br>
