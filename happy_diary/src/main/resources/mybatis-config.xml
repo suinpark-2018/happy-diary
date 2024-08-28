@@ -4,6 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias alias="TestDto" type="com.happydiary.dto.TestDto"/>
+        <typeAlias alias="UserDto" type="com.happydiary.dto.UserDto"/>
+        <typeAlias alias="BoardDto" type="com.happydiary.dto.BoardDto"/>
+        <typeAlias alias="CommentDto" type="com.happydiary.dto.CommentDto"/>
     </typeAliases>
 </configuration>
