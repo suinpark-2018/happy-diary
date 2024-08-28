@@ -70,6 +70,9 @@ happy_diary
       │   │             │   ├── TestDao.java
       │   │             │   └── TestDaoImpl.java
       │   │             ├── dto
+      │   │             │   ├── BoardDto
+      │   │             │   ├── CommentDto
+      │   │             │   └── UserDto
       │   │             └── service
       │   │                 ├── TestService.java
       │   │                 └── TestServiceImpl.java
@@ -93,6 +96,9 @@ happy_diary
       │       │   └── web.xml
       │       └── resources
       └── test
+          └── java
+              └── com.happydiary.dao
+                  └── UserDaoTest
 ```
 
 </br>
@@ -116,7 +122,7 @@ Docs        :     문서 추가 또는 수정 (ex. README 변경)
 Chore       :     패키지 매니저(ex. gitignore 수정), 빌드 업무 수정 
 Refactor    :     리팩토링, 코드 개선
 Fix         :     버그 수정
-Style       :     코드 스타일 변경 (포맷팅, 세미콜론 누락 등 코드 변경이 없는 경우)
+Style       :     코드 스타일 변경 (포맷팅, 공백 제거, 세미콜론 누락 등 코드 변경이 없는 경우)
 Comment     :     주석 추가 및 수정
 Rename      :     파일 또는 폴더명을 수정하거나 이동하는 작업만 수행한 경우
 Remove      :     파일을 삭제하는 작업만 수행한 경우
