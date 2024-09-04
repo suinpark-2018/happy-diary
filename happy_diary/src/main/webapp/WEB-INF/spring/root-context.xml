@@ -32,6 +32,27 @@
         <constructor-arg ref="sqlSessionFactory"/>
     </bean>
 
+    <!-- Password 암호화를 위한 Spring Security의 BCryptPasswordEncoder 클래스 Bean 등록 -->
+    <bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+
+    <!-- Email 인증 위한 JavaMailSenderImpl 클래스 Bean 등록 -->
+    <bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="#{properties['mailSender.host']}" />
+        <property name="port" value="#{properties['mailSender.port']}" />
+        <property name="username" value="#{properties['mailSender.username']}"/>
+        <property name="password" value="#{properties['mailSender.password']}" />
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.debug">true</prop>
+                <prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+                <prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
+            </props>
+        </property>
+    </bean>
+
     <mvc:annotation-driven/>
     <context:component-scan base-package="com.happydiary"/>
     <mybatis-spring:scan base-package="com.happydiary.dao"/>
