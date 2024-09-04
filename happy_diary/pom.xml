@@ -126,6 +126,74 @@
       <scope>provided</scope>
     </dependency>
 
+    <!-- Validation -->
+    <!-- validation-api -->
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+      <version>2.0.1.Final</version>
+    </dependency>
+    <!-- hibernate-validator -->
+    <dependency>
+      <groupId>org.hibernate.validator</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>6.1.0.Final</version>
+    </dependency>
+
+    <!-- Security - 비밀번호 암호화 기능 추가 -->
+    <!-- Java 11이면 spring security 5.x 버전 사용해야 함. -->
+    <!-- Spring Security Core -->
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-core</artifactId>
+      <version>5.6.10</version>
+    </dependency>
+
+<!--    &lt;!&ndash; 만약 Spring Security Web (보안 처리 시 활용) &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.security</groupId>-->
+<!--      <artifactId>spring-security-web</artifactId>-->
+<!--      <version>5.8.0</version>-->
+<!--    </dependency>-->
+
+<!--    &lt;!&ndash; Spring Security Config (보안 관련 설정 시 활용) &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.security</groupId>-->
+<!--      <artifactId>spring-security-config</artifactId>-->
+<!--      <version>5.8.0</version>-->
+<!--    </dependency>-->
+
+    <!-- Java 이메일 인증 API -->
+    <!-- mail -->
+    <dependency>
+      <groupId>javax.mail</groupId>
+      <artifactId>mail</artifactId>
+      <version>1.4.7</version>
+    </dependency>
+    <!-- smtp -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-mail</artifactId>
+      <version>2.0.1.RELEASE</version>
+    </dependency>
+
+    <!-- jackson for JSON -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+
   </dependencies>
 
   <!-- build -->
