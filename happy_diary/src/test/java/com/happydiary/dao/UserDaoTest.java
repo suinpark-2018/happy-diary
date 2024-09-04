@@ -36,11 +36,11 @@ class UserDaoTest {
     @BeforeEach
     void setUpDB() throws Exception {
         for (int i = 1; i <= 10; i++) {
-            UserDto testDto = new UserDto("user" + i, "Password" + i + "!", "name" + i, "user" + i + "@happydiary.com", "010-1234-5678", 19950102, "M", "서울시 강남구 영동대로 1");
+            UserDto testDto = new UserDto("user" + i, "Password" + i + "!", "name" + i, "user" + i + "@happydiary.com", "010-1234-5678", "19950102", "M", "서울시 강남구 영동대로 1");
             userDao.insert(testDto);
         }
         for (int i = 11; i <= 20; i++) {
-            UserDto testDto = new UserDto("user" + i, "Password" + i + "!", "name" + i, "user" + i + "@happydiary.com", "010-1234-5678", 19940208, "F", "서울시 강남구 영동대로 2");
+            UserDto testDto = new UserDto("user" + i, "Password" + i + "!", "name" + i, "user" + i + "@happydiary.com", "010-1234-5678", "19940208", "F", "서울시 강남구 영동대로 2");
             userDao.insert(testDto);
         }
     }
@@ -110,20 +110,20 @@ class UserDaoTest {
         assertEquals(expectedCnt, actualCnt);
 
         // 임의의 user 정보 1개 추가
-        UserDto testDto1 = new UserDto("test", "Test1234!!", "name", "test@happydiary.com", "010-1234-5678", 19950102, "M", "서울시 강남구 영동대로 1");
+        UserDto testDto1 = new UserDto("test", "Test1234!!", "name", "test@happydiary.com", "010-1234-5678", "19940208", "M", "서울시 강남구 영동대로 1");
         userDao.insert(testDto1);
         assertEquals(21, userDao.count());
 
         // 임의의 user 정보 10개 추가
         for (int i = 21; i <= 30; i++) {
-            UserDto testDto2 = new UserDto("user" + i, "Password" + i + "!", "name" + i, "user" + i + "@happydiary.com", "010-1234-5678", 19980508, "M", "서울시 강남구 영동대로 3");
+            UserDto testDto2 = new UserDto("user" + i, "Password" + i + "!", "name" + i, "user" + i + "@happydiary.com", "010-1234-5678", "19940208", "M", "서울시 강남구 영동대로 3");
             userDao.insert(testDto2);
         }
         assertEquals(31, userDao.count());
 
         // 임의의 user 정보 100개 추가
         for (int i = 31; i <= 130; i++) {
-            UserDto testDto3 = new UserDto("user" + i, "Password" + i + "!", "name" + i, "user" + i + "@happydiary.com", "010-1234-5678", 19980508, "M", "서울시 강남구 영동대로 3");
+            UserDto testDto3 = new UserDto("user" + i, "Password" + i + "!", "name" + i, "user" + i + "@happydiary.com", "010-1234-5678", "19940208", "M", "서울시 강남구 영동대로 3");
             userDao.insert(testDto3);
         }
         assertEquals(131, userDao.count());
@@ -157,7 +157,7 @@ class UserDaoTest {
         // 임의의 UserDto 객체 생성
         // 데이터 저장 및 not null 확인
         // Case 1: 1개 추가 저장
-        UserDto testDto = new UserDto("test_id", "Password1" + "!", "test_name", "test@happydiary.com", "010-1234-5678", 19980508, "M", "서울시 강남구 영동대로 3");
+        UserDto testDto = new UserDto("test_id", "Password1" + "!", "test_name", "test@happydiary.com", "010-1234-5678", "19940208", "M", "서울시 강남구 영동대로 3");
 
         // insert 성공여부 확인
         assertEquals(1, userDao.insert(testDto));
@@ -171,7 +171,7 @@ class UserDaoTest {
 
         // Case 2: 50개 추가 저장
         for (int i = 1; i <= 50; i++) {
-            UserDto addTestDto = new UserDto("test" + i, "Password" + i + "!", "name" + i, "user" + i + "@happydiary.com", "010-1234-5678", 19980508, "M", "서울시 강남구 영동대로 3");
+            UserDto addTestDto = new UserDto("test" + i, "Password" + i + "!", "name" + i, "user" + i + "@happydiary.com", "010-1234-5678", "19940208", "M", "서울시 강남구 영동대로 3");
             userDao.insert(addTestDto);
         }
 
@@ -187,7 +187,7 @@ class UserDaoTest {
     @DisplayName("DB 연결 실패로 인한 데이터 저장 실패")
     void failToDBConnection_insert() throws Exception {
         // 임의의 UserDto 객체 생성
-        UserDto testDto = new UserDto("test", "Password1!", "name", "test@happydiary.com", "010-1234-5678", 19980508, "M", "서울시 강남구 영동대로 3");
+        UserDto testDto = new UserDto("test", "Password1!", "name", "test@happydiary.com", "010-1234-5678", "19940208", "M", "서울시 강남구 영동대로 3");
 
         // count 메서드 호출 시 DB 접근 예외 발생시킴
         when(mockDao.insert(testDto)).thenThrow(new DataAccessException("Database connection error!") {});
@@ -198,7 +198,7 @@ class UserDaoTest {
     @DisplayName("PK 중복인 경우 데이터 저장 실패 테스트")
     void failToInsert_DuplicatedPK() throws Exception {
         // 이미 테스트에 존재하는 정보가 저장된 테스트용 객체 testDto
-        UserDto testDto = new UserDto("user1", "Password1!", "name1", "user1@happydiary.com", "010-1234-5678", 19980508, "M", "서울시 강남구 영동대로 3");
+        UserDto testDto = new UserDto("user1", "Password1!", "name1", "user1@happydiary.com", "010-1234-5678", "19940208", "M", "서울시 강남구 영동대로 3");
         assertThrows(DuplicateKeyException.class, () -> userDao.insert(testDto));
     }
 
@@ -206,7 +206,7 @@ class UserDaoTest {
     @DisplayName("NOT NULL로 설정된 항목 저장 누락 시 데이터 저장 실패")
     void failToInsert_NotNullColumn() throws Exception {
         // Not Null 항목 누락된 테스트용 객체 testDto
-        UserDto testDto = new UserDto("test", null, "test1", "test1@happydiary.com", "010-1234-5678", 19980508, "M", "서울시 강남구 영동대로 3");
+        UserDto testDto = new UserDto("test", null, "test1", "test1@happydiary.com", "010-1234-5678", "19940208", "M", "서울시 강남구 영동대로 3");
         assertThrows(DataIntegrityViolationException.class, () -> userDao.insert(testDto));
     }
 
@@ -215,7 +215,7 @@ class UserDaoTest {
     void failToInsert_TypeLengthError() throws Exception {
         // 잘못된 타입으로 설정한 항목이 포함된 테스트용 객체 testDto
         // name 컬럼의 타입 길이는 varchar(20)으로 설정되어 있으며, 그 이상의 데이터 저장 시도 시 관련 예외 발생하는지 확인
-        UserDto testDto = new UserDto("user1", "Password1!", "name12345name56789name...", "user1@happydiary.com", "010-1234-5678", 19980508, "M", "서울시 강남구 영동대로 3");
+        UserDto testDto = new UserDto("user1", "Password1!", "name12345name56789name...", "user1@happydiary.com", "010-1234-5678", "19940208", "M", "서울시 강남구 영동대로 3");
         assertThrows(DataIntegrityViolationException.class, () -> userDao.insert(testDto));
     }
 
