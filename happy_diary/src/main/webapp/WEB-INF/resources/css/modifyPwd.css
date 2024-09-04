@@ -1,0 +1,89 @@
+form {
+    margin: 20px auto;
+    width: 60%;
+    border: 1px solid gray;
+    padding: 20px;
+}
+
+.additional-options {
+    display: flex;
+    margin: 10px 0;
+    width: 40px;
+    font-size: 15px;
+    color: gray;
+    text-decoration: none;
+}
+
+p {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+}
+
+table {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#user-id {
+    margin: 20px 40px;
+    border: none;
+    box-sizing: border-box;
+    font-size: 16px;
+    width: 80%;
+}
+
+label {
+    font-size: 16px;
+    color: black;
+}
+
+input[type="password"] {
+    padding: 10px;
+    margin: 10px 40px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    width: 80%;
+}
+
+input[type="password"]:focus {
+    border-color: #f44336;
+    outline: none;
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 20px;
+}
+
+button {
+    width: 25%;
+    padding: 12px;
+    margin: 0 10px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #d32f2f;
+}
+
+button:active {
+    background-color: #b71c1c;
+}
+
+button[type="button"] {
+    background-color: gray;
+}
