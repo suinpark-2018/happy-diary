@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.happydiary.dao.BoardDao">
+    <select id="count" resultType="int">
+        SELECT COUNT(*) FROM board
+    </select>
+
+    <select id="select" parameterType="Integer" resultType="BoardDto">
+        SELECT * FROM board
+        WHERE bno = #{bno}
+    </select>
+
+    <select id="selectAll" parameterType="PageRequestDto" resultType="BoardDto">
+        SELECT * FROM board
+        ORDER BY bno DESC
+        LIMIT #{skip}, #{size}
+    </select>
+
+    <select id="countSelectedRow" parameterType="Map" resultType="int">
+        SELECT COUNT(*) FROM board
+        WHERE 1 = 1
+            <if test='option != null and option == "title"'>
+                AND title LIKE CONCAT('%', #{keyword}, '%')
+            </if>
+            <if test='option != null and option == "writer"'>
+                AND writer LIKE CONCAT('%', #{keyword}, '%')
+            </if>
+            <if test='option != null and option == "title_writer"'>
+                AND (title LIKE CONCAT('%', #{keyword}, '%') OR writer LIKE CONCAT('%', #{keyword}, '%'))
+            </if>
+    </select>
+
+    <select id="selectByTitleOrWriter" parameterType="Map" resultType="BoardDto">
+        SELECT * FROM board
+        WHERE 1 = 1
+        <if test='option != null and option == "title"'>
+            AND title LIKE CONCAT('%', #{keyword}, '%')
+        </if>
+        <if test='option != null and option == "writer"'>
+            AND writer LIKE CONCAT('%', #{keyword}, '%')
+        </if>
+        <if test='option != null and option == "title_writer"'>
+            AND (title LIKE CONCAT('%', #{keyword}, '%') OR writer LIKE CONCAT('%', #{keyword}, '%'))
+        </if>
+        ORDER BY bno DESC
+        LIMIT #{skip}, #{size}
+    </select>
+
+    <select id="countSelectedRowByVisibleScope" parameterType="String" resultType="int">
+        SELECT COUNT(*) FROM board
+        WHERE 1 = 1
+            <if test= 'visibility == "public"'>
+                AND is_public = 'Y'
+            </if>
+            <if test= 'visibility == "private"'>
+                AND is_public = 'N'
+            </if>
+            <if test= 'visibility != "public" and visibility != "private"'>
+                1 = 0  <!-- 조건이 맞지 않으면 0을 반환 -->
+            </if>
+    </select>
+
+    <select id="selectByVisibleScope" parameterType="Map" resultType="BoardDto">
+        SELECT * FROM board
+        WHERE 1 = 1
+            <if test= 'visibility != null and visibility == "public"'>
+                AND is_public = 'Y'
+            </if>
+            <if test= 'visibility != null and visibility == "private"'>
+                AND is_public = 'N'
+            </if>
+            <if test= 'visibility != "public" and visibility != "private"'>
+                AND 1 = 0 <!-- 조건에 맞지 않는 경우 쿼리가 실행되지 않도록 설정 -->
+            </if>
+        ORDER BY bno DESC
+        LIMIT #{skip}, #{size}
+    </select>
+
+    <select id="countSelectedRowByTarget" parameterType="String" resultType="int">
+        SELECT COUNT(*) FROM board
+        WHERE praise_target LIKE CONCAT('%', #{praise_target}, '%')
+    </select>
+
+    <select id="selectByTarget" parameterType="Map" resultType="BoardDto">
+        SELECT * FROM board
+        WHERE praise_target LIKE CONCAT('%', #{praise_target}, '%')
+        ORDER BY bno DESC
+        LIMIT #{skip}, #{size}
+    </select>
+
+    <insert id="insert" parameterType="BoardDto">
+        INSERT INTO board (title, content, img_path, writer, praise_target, is_public, is_notice, reg_id, reg_date)
+        VALUES (#{title}, #{content}, #{img_path}, #{writer}, #{praise_target}, #{is_public}, #{is_notice}, #{writer}, NOW())
+    </insert>
+
+    <update id="update" parameterType="BoardDto">
+        UPDATE board
+        SET title = #{title}, content = #{content}, img_path = #{img_path}, praise_target = #{praise_target}, is_public = #{is_public}, up_id = #{writer}, up_date = NOW()
+        WHERE bno = #{bno}
+    </update>
+
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM board
+        WHERE bno = #{bno}
+    </delete>
+
+    <delete id="deleteAll">
+        DELETE FROM board
+    </delete>
+</mapper>
