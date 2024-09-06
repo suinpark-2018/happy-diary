@@ -42,11 +42,17 @@
 
 ## 🔮 주요 기능
 * 회원가입
+  - 이메일 본인인증
+  - 아이디 중복 확인
 * 로그인/로그아웃
+  - SNS 간편 로그인
+  - 아이디/비밀번호 찾기
 * 게시판
-  - 개인 칭찬 공간
-  - 공용 칭찬 공간
-  - 공지사항
+  - 게시물 조회/작성/수정/삭제
+  - 게시물 검색
+  - 게시물 공개 범위 설정
+  - 페이징 처리
+  - 이미지 첨부
 * 관리자
   - 회원 관리
   - 게시판 관리
@@ -63,42 +69,91 @@ happy_diary
       ├── main
       │   ├── java
       │   │   └── com
-      │   │       └── happydiary
-      │   │             ├── controller
-      │   │             │   └── TestController.java
-      │   │             ├── dao
-      │   │             │   ├── TestDao.java
-      │   │             │   └── TestDaoImpl.java
-      │   │             ├── dto
-      │   │             │   ├── BoardDto
-      │   │             │   ├── CommentDto
-      │   │             │   └── UserDto
-      │   │             └── service
-      │   │                 ├── TestService.java
-      │   │                 └── TestServiceImpl.java
+      │   │   └── happydiary
+      │   │       ├── common
+      │   │       │   ├── exception
+      │   │       │   │   └── GlobalExceptionHandler.java
+      │   │       │   └── validation
+      │   │       │       ├── ValidationGroups.java
+      │   │       │       └── ValidationSequence.java
+      │   │       ├── controller
+      │   │       │   ├── FindIdPwdController.java
+      │   │       │   ├── LoginController.java
+      │   │       │   ├── SignUpController.java
+      │   │       │   └── TestController.java
+      │   │       ├── dao
+      │   │       │   ├── BoardDao.java
+      │   │       │   ├── BoardDaoImpl.java
+      │   │       │   ├── TestDao.java
+      │   │       │   ├── TestDaoImpl.java
+      │   │       │   ├── UserDao.java
+      │   │       │   └── UserDaoImpl.java
+      │   │       ├── dto
+      │   │       │   ├── BoardDto.java
+      │   │       │   ├── CommentDto.java
+      │   │       │   ├── PageRequestDto.java
+      │   │       │   ├── PageResponseDto.java
+      │   │       │   └── UserDto.java
+      │   │       └── service
+      │   │           ├── BoardService.java
+      │   │           ├── BoardServiceImpl.java
+      │   │           ├── TestService.java
+      │   │           ├── TestServiceImpl.java
+      │   │           ├── UserService.java
+      │   │           ├── UserServiceImpl.java
+      │   │           └── mail
+      │   │               ├── MailHandler.java
+      │   │               ├── MailService.java
+      │   │               ├── MockMailSender.java
+      │   │               └── TempKey.java
       │   ├── resources
-      │   │   ├── mapper
-      │   │   │   └── TestMapper.xml
       │   │   ├── application.properties
+      │   │   ├── mapper
+      │   │   │   ├── BoardMapper.xml
+      │   │   │   ├── TestMapper.xml
+      │   │   │   └── UserMapper.xml
       │   │   └── mybatis-config.xml
       │   └── webapp
-      │       ├── WEB-INF
-      │       │   ├── resources
-      │       │   │   ├── css
-      │       │   │   ├── img
-      │       │   │   ├── js      
-      │       │   ├── spring
-      │       │   │   ├── appServlet
-      │       │   │   │   └── servlet-context.xml
-      │       │   │   └── root-context.xml
-      │       │   ├── views
-      │       │   │   └── index.jsp
-      │       │   └── web.xml
-      │       └── resources
+      │       └── WEB-INF
+      │           ├── resources
+      │           │   ├── css
+      │           │   │   ├── findIdPwd.css
+      │           │   │   ├── identityVerification.css
+      │           │   │   ├── index.css
+      │           │   │   ├── login.css
+      │           │   │   ├── main.css
+      │           │   │   ├── modifyPwd.css
+      │           │   │   └── register.css
+      │           │   ├── img
+      │           │   └── js
+      │           │       ├── findIdPwd.js
+      │           │       ├── identityVerification.js
+      │           │       ├── login.js
+      │           │       ├── main.js
+      │           │       └── register.js
+      │           ├── spring
+      │           │   ├── appServlet
+      │           │   │   └── servlet-context.xml
+      │           │   └── root-context.xml
+      │           ├── views
+      │           │   ├── findIdPwd.jsp
+      │           │   ├── identityVerification.jsp
+      │           │   ├── index.jsp
+      │           │   ├── login.jsp
+      │           │   ├── main.jsp
+      │           │   ├── modifyPwd.jsp
+      │           │   └── register.jsp
+      │           └── web.xml
       └── test
           └── java
-              └── com.happydiary.dao
-                  └── UserDaoTest
+              └── com
+                  └── happydiary
+                      ├── dao
+                      │   ├── BoardDaoImplTest.java
+                      │   └── UserDaoTest.java
+                      └── service
+                          ├── BoardServiceImplTest.java
+                          └── UserServiceImplTest.java
 ```
 
 </br>
