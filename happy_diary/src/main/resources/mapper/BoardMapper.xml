@@ -65,10 +65,10 @@
     <select id="selectByVisibleScope" parameterType="Map" resultType="BoardDto">
         SELECT * FROM board
         WHERE 1 = 1
-            <if test= 'visibility != null and visibility == "public"'>
+            <if test= 'visibility == "public"'>
                 AND is_public = 'Y'
             </if>
-            <if test= 'visibility != null and visibility == "private"'>
+            <if test= 'visibility == "private"'>
                 AND is_public = 'N'
             </if>
             <if test= 'visibility != "public" and visibility != "private"'>
