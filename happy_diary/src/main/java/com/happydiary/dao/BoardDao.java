@@ -22,10 +22,10 @@ public interface BoardDao {
     List<BoardDto> selectByTitleOrWriter(PageRequestDto pageRequestDto, String option, String keyword) throws Exception;
 
     // 공개여부에 따른 게시물 개수
-    int countSelectedRowByVisibleScope(String visibility) throws Exception;
+    int countSelectedRowByVisibleScope(String visibility, String id) throws Exception;
 
     // 게시물 공개여부에 따른 조회 결과
-    List<BoardDto> selectByVisibleScope(PageRequestDto pageRequestDto, String visibility) throws Exception;
+    List<BoardDto> selectByVisibleScope(PageRequestDto pageRequestDto, String visibility, String id) throws Exception;
 
     // 칭찬 대상에 따른 게시물 개수
     int countSelectedRowByTarget(String target) throws Exception;

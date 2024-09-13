@@ -2,18 +2,20 @@ package com.happydiary.dao;
 
 import com.happydiary.dto.BoardDto;
 import com.happydiary.dto.PageRequestDto;
+import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.SqlSession;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Repository
+@RequiredArgsConstructor
 public class BoardDaoImpl implements BoardDao {
-    @Autowired SqlSession session;
 
+    private final SqlSession session;
     private static String namespace = "com.happydiary.dao.BoardDao.";
 
     // 전체 게시물 갯수
@@ -57,17 +59,33 @@ public class BoardDaoImpl implements BoardDao {
 
     // 공개여부에 따른 게시물 개수
     @Override
-    public int countSelectedRowByVisibleScope(String visibility) throws Exception {
-        return session.selectOne(namespace + "countSelectedRowByVisibleScope", visibility);
+    public int countSelectedRowByVisibleScope(String visibility, String id) throws Exception {
+        // 공개범위가 유효하지 않은 값으로 들어오면 0 반환
+        if (!visibility.equals("public") && !visibility.equals("private")) {
+            return 0;
+        }
+        // 공개범위 및 사용자 아이디
+        Map<String, String> map = new HashMap<>();
+        map.put("visibility", visibility);
+        map.put("id", id);
+        return session.selectOne(namespace + "countSelectedRowByVisibleScope", map);
     }
 
     // 게시물 공개여부에 따른 게시물 목록 조회 결과
+    // Public 의 경우, 어떤 사용자든 상관없이 모든 공개 게시물 출력
+    // Private 의 경우, 로그인한 아이디로 조회하여 해당 사용자가 작성한 게시물만 출력
     @Override
-    public List<BoardDto> selectByVisibleScope(PageRequestDto pageRequestDto, String visibility) throws Exception {
+    public List<BoardDto> selectByVisibleScope(PageRequestDto pageRequestDto, String visibility, String id) throws Exception {
+        // 공개범위가 유효하지 않은 값으로 들어오면 빈 리스트 반환
+        if (!visibility.equals("public") && !visibility.equals("private")) {
+            return new ArrayList<>();
+        }
+
         Map<String, Object> map = new HashMap<>();
         map.put("skip", pageRequestDto.getSkip());
         map.put("size", pageRequestDto.getSize());
         map.put("visibility", visibility);
+        map.put("id", id);
         return session.selectList(namespace + "selectByVisibleScope", map);
     }
 
@@ -100,9 +118,10 @@ public class BoardDaoImpl implements BoardDao {
     }
 
     // 게시물 삭제
+    // is_active Y -> N 으로 업데이트 하여 일정 기간동안 보관
     @Override
     public int delete(Integer bno) throws Exception {
-        return session.delete(namespace + "delete", bno);
+        return session.update(namespace + "delete", bno);
     }
 
     // 게시물 전체 삭제
