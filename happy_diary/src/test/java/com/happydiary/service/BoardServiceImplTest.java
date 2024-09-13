@@ -1,8 +1,6 @@
 package com.happydiary.service;
 
 import com.happydiary.dto.BoardDto;
-import com.happydiary.dto.PageRequestDto;
-import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -12,9 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.sql.SQLSyntaxErrorException;
-import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -41,14 +36,22 @@ class BoardServiceImplTest {
         }
     }
 
-//    @Test
+    @Test
     void setUpDB() {
-        for (int i = 1; i <= 50; i++) {
-            BoardDto testDto = new BoardDto("title" + i, "content" + i, null, "writer" + i, "target" + i, "N", "N");
+        for (int i = 1; i <= 20; i++) {
+            BoardDto testDto = new BoardDto("title" + i, "content" + i, null, "user" + i, "target" + i, "N", "N");
             boardService.makeBoard(testDto);
         }
-        for (int i = 51; i <= 100; i++) {
-            BoardDto testDto = new BoardDto("title" + i, "content" + i, null, "writer" + i, "target" + i, "Y", "N");
+        for (int i = 21; i <= 40; i++) {
+            BoardDto testDto = new BoardDto("title" + i, "content" + i, null, "user" + i, "target" + i, "Y", "N");
+            boardService.makeBoard(testDto);
+        }
+        for (int i = 41; i <= 70; i++) {
+            BoardDto testDto = new BoardDto("title" + i, "content" + i, null, "user40", "target" + i, "N", "N");
+            boardService.makeBoard(testDto);
+        }
+        for (int i = 71; i <= 100; i++) {
+            BoardDto testDto = new BoardDto("title" + i, "content" + i, null, "user1", "target" + i, "N", "N");
             boardService.makeBoard(testDto);
         }
     }
@@ -334,15 +337,17 @@ class BoardServiceImplTest {
     void successToGetNumberOfFoundBoards_byVisibleScope() {
         String openedVisibility = "public";
         String closedVisibility = "private";
-        assertTrue(boardService.getNumberOfFoundBoards(openedVisibility) > 0);
-        assertTrue(boardService.getNumberOfFoundBoards(closedVisibility) > 0);
+        String id = "writer1";
+        assertTrue(boardService.getNumberOfFoundBoardsByVisibility(openedVisibility, id) > 0);
+        assertTrue(boardService.getNumberOfFoundBoardsByVisibility(closedVisibility, id) > 0);
     }
 
     @Test
     @DisplayName("공개여부를 기준으로 조회된 게시물 개수 확인 실패")
     void failToGetNumberOfFoundBoards_byVisibleScope() {
         String wrongVisibility = "wrong_visibility";
-        assertEquals(0, boardService.getNumberOfFoundBoards(wrongVisibility));
+        String id = "writer1";
+        assertEquals(0, boardService.getNumberOfFoundBoardsByVisibility(wrongVisibility, id));
     }
 
     @Test
@@ -352,9 +357,10 @@ class BoardServiceImplTest {
         int lastPno = 1; // 1 페이지
         String openedVisibility = "public";
         String closedVisibility = "private";
+        String id = "writer1";
 
-        assertFalse(boardService.findByVisibleScope(firstPno, openedVisibility).isEmpty());
-        assertFalse(boardService.findByVisibleScope(lastPno, closedVisibility).isEmpty());
+        assertFalse(boardService.findByVisibleScope(firstPno, openedVisibility, id).isEmpty());
+        assertFalse(boardService.findByVisibleScope(lastPno, closedVisibility, id).isEmpty());
     }
 
     @Test
@@ -363,15 +369,16 @@ class BoardServiceImplTest {
         int correctPno = 1;
         String openedVisibility = "public";
         String closedVisibility = "private";
+        String id = "writer1";
 
         // 잘못된 페이지 설정 시
         int wrongPno = 0;
-        assertTrue(boardService.findByVisibleScope(wrongPno, openedVisibility).isEmpty());
-        assertTrue(boardService.findByVisibleScope(wrongPno, closedVisibility).isEmpty());
+        assertTrue(boardService.findByVisibleScope(wrongPno, openedVisibility, id).isEmpty());
+        assertTrue(boardService.findByVisibleScope(wrongPno, closedVisibility, id).isEmpty());
 
         // 잘못된 공개여부 설정 시
         String wrongVisibility = "wrong_visibility";
-        assertTrue(boardService.findByVisibleScope(correctPno, wrongVisibility).isEmpty());
+        assertTrue(boardService.findByVisibleScope(correctPno, wrongVisibility, id).isEmpty());
     }
 
     @Test
