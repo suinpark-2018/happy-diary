@@ -10,13 +10,13 @@
             <li><a href="#" class="app-name">HAPPY DIARY</a></li>
             <li><a href="#">Private Space</a>
                 <ul>
-                    <li><a href="#">Own Your Wins</a></li>
+                    <li><a href="/board/list?visibility=private&pno=1">Own Your Wins</a></li>
                     <li><a href="#">Today's Note</a></li>
                 </ul>
             </li>
             <li><a href="#">Shared Space</a>
                 <ul>
-                    <li><a href="#">Celebrate Their Wins</a></li>
+                    <li><a href="/board/list?visibility=public&pno=1">Celebrate Their Wins</a></li>
                     <li><a href="#">Peek into Diaries</a></li>
                 </ul>
             </li>
