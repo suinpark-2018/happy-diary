@@ -288,56 +288,67 @@ class BoardDaoImplTest {
     @Test
     @DisplayName("공개여부로 검색한 게시물 개수 확인 성공")
     void successToCountSelectedRowByVisibleScope() throws Exception {
+        String id = "writer1";
+
         String visibility1 = "public";
-        int publicBoardCnt = boardDao.countSelectedRowByVisibleScope(visibility1);
+        int publicBoardCnt = boardDao.countSelectedRowByVisibleScope(visibility1, id);
         assertTrue(publicBoardCnt > 0);
         assertEquals(50, publicBoardCnt);
 
         String visibility2 = "private";
-        int privateBoardCnt = boardDao.countSelectedRowByVisibleScope(visibility2);
+        int privateBoardCnt = boardDao.countSelectedRowByVisibleScope(visibility2, id);
         assertTrue(privateBoardCnt > 0);
-        assertEquals(50, privateBoardCnt);
+        assertEquals(1, privateBoardCnt);
     }
 
     @Test
     @DisplayName("공개여부로 검색한 게시물 개수 확인 실패")
     void failToCountSelectedRowByVisibleScope() throws Exception {
+        String id = "writer1";
+
         String visibility1 = "public";
-        int publicBoardCnt = boardDao.countSelectedRowByVisibleScope(visibility1);
-        assertNotEquals(100, publicBoardCnt);
+        int publicBoardCnt = boardDao.countSelectedRowByVisibleScope(visibility1, id);
+        assertNotEquals(1, publicBoardCnt);
 
         String visibility2 = "private";
-        int privateBoardCnt = boardDao.countSelectedRowByVisibleScope(visibility2);
-        assertNotEquals(100, privateBoardCnt);
+        int privateBoardCnt = boardDao.countSelectedRowByVisibleScope(visibility2, id);
+        assertNotEquals(50, privateBoardCnt);
+
+        String wrongVisibility = "wrong_visibility";
+        int boardCnt = boardDao.countSelectedRowByVisibleScope(wrongVisibility, id);
+        assertEquals(0, boardCnt);
     }
 
     @Test
     @DisplayName("DB 연결 실패로 인한 제목, 작성자로 게시물 검색 실패")
     void failToDBConnection_countSelectedRowByVisibleScope() throws Exception {
         String visibility = "public";
+        String id = "writer1";
 
         // 메서드 호출 시 DB 접근 예외 발생시킴
-        when(mockDao.countSelectedRowByVisibleScope(visibility)).thenThrow(new DataAccessException("Database connection failed!") {});
-        assertThrows(DataAccessException.class, () -> mockDao.countSelectedRowByVisibleScope(visibility));
+        when(mockDao.countSelectedRowByVisibleScope(visibility, id)).thenThrow(new DataAccessException("Database connection failed!") {});
+        assertThrows(DataAccessException.class, () -> mockDao.countSelectedRowByVisibleScope(visibility, id));
     }
 
     @Test
     @DisplayName("Server 연결 실패로 인한 제목, 작성자로 게시물 검색 실패")
     void failToServerConnection_countSelectedRowByVisibleScope() throws Exception {
         String visibility = "private";
+        String id = "writer1";
 
         // 메서드 호출 시 서버 연결 예외 발생시킴
-        when(mockDao.countSelectedRowByVisibleScope(visibility)).thenThrow(new ConnectException("Server connection failed!"));
-        assertThrows(ConnectException.class, () -> mockDao.countSelectedRowByVisibleScope(visibility));
+        when(mockDao.countSelectedRowByVisibleScope(visibility, id)).thenThrow(new ConnectException("Server connection failed!"));
+        assertThrows(ConnectException.class, () -> mockDao.countSelectedRowByVisibleScope(visibility, id));
     }
 
     @Test
     @DisplayName("공개여부로 게시물 조회 성공")
     void successToSelectByVisibleScope() throws Exception {
         PageRequestDto pageRequestDto = new PageRequestDto(1, 10);
+        String id = "writer1";
 
         String visibility1 = "public";
-        List<BoardDto> boards1 = boardDao.selectByVisibleScope(pageRequestDto, visibility1);
+        List<BoardDto> boards1 = boardDao.selectByVisibleScope(pageRequestDto, visibility1, id);
 
         assertFalse(boards1.isEmpty());
         assertEquals(10, boards1.size());
@@ -346,10 +357,10 @@ class BoardDaoImplTest {
         }
 
         String visibility2 = "private";
-        List<BoardDto> boards2 = boardDao.selectByVisibleScope(pageRequestDto, visibility2);
+        List<BoardDto> boards2 = boardDao.selectByVisibleScope(pageRequestDto, visibility2, id);
 
         assertFalse(boards2.isEmpty());
-        assertEquals(10, boards2.size());
+        assertEquals(1, boards2.size());
         for (BoardDto board : boards2) {
             assertEquals("N", board.getIs_public());
         }
@@ -361,7 +372,8 @@ class BoardDaoImplTest {
         PageRequestDto pageRequestDto = new PageRequestDto(1, 10);
 
         String visibility = "wrong_visible_scope";
-        List<BoardDto> boards = boardDao.selectByVisibleScope(pageRequestDto, visibility);
+        String id = "writer1";
+        List<BoardDto> boards = boardDao.selectByVisibleScope(pageRequestDto, visibility, id);
         assertTrue(boards.isEmpty());
     }
 
@@ -370,10 +382,11 @@ class BoardDaoImplTest {
     void failToDBConnection_selectByVisibleScope() throws Exception {
         PageRequestDto pageRequestDto = new PageRequestDto(1, 10);
         String visibility = "public";
+        String id = "writer1";
 
         // 메서드 호출 시 DB 접근 예외 발생시킴
-        when(mockDao.selectByVisibleScope(pageRequestDto, visibility)).thenThrow(new DataAccessException("Database connection failed!") {});
-        assertThrows(DataAccessException.class, () -> mockDao.selectByVisibleScope(pageRequestDto, visibility));
+        when(mockDao.selectByVisibleScope(pageRequestDto, visibility, id)).thenThrow(new DataAccessException("Database connection failed!") {});
+        assertThrows(DataAccessException.class, () -> mockDao.selectByVisibleScope(pageRequestDto, visibility, id));
     }
 
     @Test
@@ -381,10 +394,11 @@ class BoardDaoImplTest {
     void failToServerConnection_selectByVisibleScope() throws Exception {
         PageRequestDto pageRequestDto = new PageRequestDto(1, 10);
         String visibility = "private";
+        String id = "writer1";
 
         // 메서드 호출 시 서버 연결 예외 발생시킴
-        when(mockDao.selectByVisibleScope(pageRequestDto, visibility)).thenThrow(new ConnectException("Server connection failed!"));
-        assertThrows(ConnectException.class, () -> mockDao.selectByVisibleScope(pageRequestDto, visibility));
+        when(mockDao.selectByVisibleScope(pageRequestDto, visibility, id)).thenThrow(new ConnectException("Server connection failed!"));
+        assertThrows(ConnectException.class, () -> mockDao.selectByVisibleScope(pageRequestDto, visibility, id));
     }
 
     @Test
