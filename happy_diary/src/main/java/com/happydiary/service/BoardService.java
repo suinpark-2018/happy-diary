@@ -23,11 +23,10 @@ public interface BoardService {
     List<BoardDto> findByTitleOrWriter(int pno, String option, String keyword);
 
     // 2.1. 공개여부(Public or Private) 기준에 따라 검색된 게시물 개수
-    // Overload (오버로딩) 사용 - 매개변수 개수 다르게 지정
-    int getNumberOfFoundBoards(String visibility);
+    int getNumberOfFoundBoardsByVisibility(String visibility, String id);
 
     // 2.2. 공개여부(Public or Private) 기준으로 조회된 게시물 목록
-    List<BoardDto> findByVisibleScope(int pno, String visibility);
+    List<BoardDto> findByVisibleScope(int pno, String visibility, String id);
 
     // 3.1. 칭찬 대상(praise_target) 기준으로 검색된 게시물 개수
     int getNumberOfFoundBoardsByTarget(String praise_target);

@@ -1,6 +1,7 @@
 package com.happydiary.service;
 
 import com.happydiary.dao.BoardDaoImpl;
+import com.happydiary.dao.UserDaoImpl;
 import com.happydiary.dto.BoardDto;
 import com.happydiary.dto.PageRequestDto;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class BoardServiceImpl implements BoardService {
+    private final UserDaoImpl userDao;
     private final BoardDaoImpl boardDao;
 
     // 게시물 개수 확인
@@ -108,13 +110,12 @@ public class BoardServiceImpl implements BoardService {
     // 2. 공개여부(Public or Private) 기준
 
     // 2.1. 공개여부(Public or Private) 기준에 따라 검색된 게시물 개수
-    // Overload (오버로딩) 사용 - 매개변수 개수 다르게 지정
     @Override
-    public int getNumberOfFoundBoards(String visibility) {
+    public int getNumberOfFoundBoardsByVisibility(String visibility, String id) {
         int total = 0;
         try {
             if (visibility.equals("public") || visibility.equals("private")) {
-                total = boardDao.countSelectedRowByVisibleScope(visibility);
+                total = boardDao.countSelectedRowByVisibleScope(visibility, id);
             } else {
                 throw new IllegalArgumentException("This is incorrect visibility");
             }
@@ -126,14 +127,14 @@ public class BoardServiceImpl implements BoardService {
     }
 
     // 2.2. 공개여부(Public or Private) 기준으로 조회된 게시물 목록
+    // 2.2.1. Private 의 경우, 로그인한 아이디로 조회하여 해당 사용자가 작성한 게시물만 출력
     @Override
-    public List<BoardDto> findByVisibleScope(int pno, String visibility) {
+    public List<BoardDto> findByVisibleScope(int pno, String visibility, String id) {
         List<BoardDto> foundBoards = new ArrayList<>();
         try {
             if (visibility.equals("public") || visibility.equals("private")) {
                 PageRequestDto pageRequestDto = new PageRequestDto(pno, 10);
-                foundBoards = boardDao.selectByVisibleScope(pageRequestDto, visibility);
-                System.out.println("foundBoards: " + foundBoards);
+                foundBoards = boardDao.selectByVisibleScope(pageRequestDto, visibility, id);
             } else {
                 throw new IllegalArgumentException("This is incorrect visibility");
             }
