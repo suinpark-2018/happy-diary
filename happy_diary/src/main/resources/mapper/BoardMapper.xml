@@ -28,7 +28,7 @@
             <if test='option != null and option == "writer"'>
                 AND writer LIKE CONCAT('%', #{keyword}, '%')
             </if>
-            <if test='option != null and option == "title_writer"'>
+            <if test='option != null and option == "title_or_writer"'>
                 AND (title LIKE CONCAT('%', #{keyword}, '%') OR writer LIKE CONCAT('%', #{keyword}, '%'))
             </if>
     </select>
@@ -42,7 +42,7 @@
         <if test='option != null and option == "writer"'>
             AND writer LIKE CONCAT('%', #{keyword}, '%')
         </if>
-        <if test='option != null and option == "title_writer"'>
+        <if test='option != null and option == "title_or_writer"'>
             AND (title LIKE CONCAT('%', #{keyword}, '%') OR writer LIKE CONCAT('%', #{keyword}, '%'))
         </if>
         ORDER BY bno DESC
