@@ -14,13 +14,14 @@
 
     <select id="selectAll" parameterType="PageRequestDto" resultType="BoardDto">
         SELECT * FROM board
+        WHERE is_active = 'Y'
         ORDER BY bno DESC
         LIMIT #{skip}, #{size}
     </select>
 
     <select id="countSelectedRow" parameterType="Map" resultType="int">
         SELECT COUNT(*) FROM board
-        WHERE 1 = 1
+        WHERE is_active = 'Y' AND 1 = 1
             <if test='option != null and option == "title"'>
                 AND title LIKE CONCAT('%', #{keyword}, '%')
             </if>
@@ -34,7 +35,7 @@
 
     <select id="selectByTitleOrWriter" parameterType="Map" resultType="BoardDto">
         SELECT * FROM board
-        WHERE 1 = 1
+        WHERE is_active = 'Y' AND 1 = 1
         <if test='option != null and option == "title"'>
             AND title LIKE CONCAT('%', #{keyword}, '%')
         </if>
@@ -48,31 +49,25 @@
         LIMIT #{skip}, #{size}
     </select>
 
-    <select id="countSelectedRowByVisibleScope" parameterType="String" resultType="int">
+    <select id="countSelectedRowByVisibleScope" parameterType="map" resultType="int">
         SELECT COUNT(*) FROM board
-        WHERE 1 = 1
-            <if test= 'visibility == "public"'>
-                AND is_public = 'Y'
-            </if>
-            <if test= 'visibility == "private"'>
-                AND is_public = 'N'
-            </if>
-            <if test= 'visibility != "public" and visibility != "private"'>
-                1 = 0  <!-- 조건이 맞지 않으면 0을 반환 -->
-            </if>
+        WHERE is_active = 'Y' AND 1 = 1
+        <if test= 'visibility == "public"'>
+            AND is_public = 'Y'
+        </if>
+        <if test= 'visibility == "private"'>
+            AND (is_public = 'N' AND writer = #{id})
+        </if>
     </select>
 
     <select id="selectByVisibleScope" parameterType="Map" resultType="BoardDto">
         SELECT * FROM board
-        WHERE 1 = 1
+        WHERE is_active = 'Y' AND 1 = 1
             <if test= 'visibility == "public"'>
                 AND is_public = 'Y'
             </if>
             <if test= 'visibility == "private"'>
-                AND is_public = 'N'
-            </if>
-            <if test= 'visibility != "public" and visibility != "private"'>
-                AND 1 = 0 <!-- 조건에 맞지 않는 경우 쿼리가 실행되지 않도록 설정 -->
+                AND (is_public = 'N' AND writer = #{id})
             </if>
         ORDER BY bno DESC
         LIMIT #{skip}, #{size}
@@ -80,19 +75,19 @@
 
     <select id="countSelectedRowByTarget" parameterType="String" resultType="int">
         SELECT COUNT(*) FROM board
-        WHERE praise_target LIKE CONCAT('%', #{praise_target}, '%')
+        WHERE praise_target LIKE CONCAT('%', #{praise_target}, '%') AND is_active = 'Y'
     </select>
 
     <select id="selectByTarget" parameterType="Map" resultType="BoardDto">
         SELECT * FROM board
-        WHERE praise_target LIKE CONCAT('%', #{praise_target}, '%')
+        WHERE praise_target LIKE CONCAT('%', #{praise_target}, '%') AND is_active = 'Y'
         ORDER BY bno DESC
         LIMIT #{skip}, #{size}
     </select>
 
     <insert id="insert" parameterType="BoardDto">
-        INSERT INTO board (title, content, img_path, writer, praise_target, is_public, is_notice, reg_id, reg_date)
-        VALUES (#{title}, #{content}, #{img_path}, #{writer}, #{praise_target}, #{is_public}, #{is_notice}, #{writer}, NOW())
+        INSERT INTO board (title, content, img_path, writer, praise_target, is_public, is_active, is_notice, reg_id, reg_date)
+        VALUES (#{title}, #{content}, #{img_path}, #{writer}, #{praise_target}, #{is_public}, 'Y', #{is_notice}, #{writer}, NOW())
     </insert>
 
     <update id="update" parameterType="BoardDto">
@@ -101,10 +96,11 @@
         WHERE bno = #{bno}
     </update>
 
-    <delete id="delete" parameterType="Integer">
-        DELETE FROM board
+    <update id="delete" parameterType="Integer">
+        UPDATE board
+        SET is_active = 'N'
         WHERE bno = #{bno}
-    </delete>
+    </update>
 
     <delete id="deleteAll">
         DELETE FROM board
