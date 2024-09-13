@@ -2,6 +2,8 @@ package com.happydiary.dto;
 
 import lombok.*;
 
+import java.util.Date;
+
 @Data
 @Getter
 @Setter
@@ -15,13 +17,14 @@ public class BoardDto {
     String writer;
     String praise_target;
     String is_public;
+    String is_active;
     Integer view_cnt;
     Integer comment_cnt;
     String is_notice;
     String reg_id;
-    String reg_date;
+    Date reg_date;
     String up_id;
-    String up_date;
+    Date up_date;
 
     // 게시물 작성
     public BoardDto(String title, String content, String img_path, String writer, String praise_target, String is_public, String is_notice) {
@@ -54,13 +57,14 @@ public class BoardDto {
                 ", writer='" + writer + '\'' +
                 ", praise_target='" + praise_target + '\'' +
                 ", is_public='" + is_public + '\'' +
+                ", is_active='" + is_active + '\'' +
                 ", view_cnt=" + view_cnt +
                 ", comment_cnt=" + comment_cnt +
                 ", is_notice='" + is_notice + '\'' +
                 ", reg_id='" + reg_id + '\'' +
-                ", reg_date='" + reg_date + '\'' +
+                ", reg_date=" + reg_date +
                 ", up_id='" + up_id + '\'' +
-                ", up_date='" + up_date + '\'' +
+                ", up_date=" + up_date +
                 '}';
     }
 }
