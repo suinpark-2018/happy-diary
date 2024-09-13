@@ -77,7 +77,7 @@ public class BoardServiceImpl implements BoardService {
         int total = 0;
         // Option 잘못 설정된 경우, IllegalArgumentException 예외처리
         try {
-            if (option.equals("title") || option.equals("writer")) {
+            if (option.equals("title") || option.equals("writer") || option.equals("title_or_writer")) {
                 total = boardDao.countSelectedRow(option, keyword);
             } else {
                 throw new IllegalArgumentException("This is incorrect option");
@@ -95,7 +95,9 @@ public class BoardServiceImpl implements BoardService {
         List<BoardDto> foundBoards = new ArrayList<>();
         PageRequestDto pageRequestDto = new PageRequestDto(pno, 10);
         try {
-            if (pno > 0 && (option.equals("title") || option.equals("writer")) && !keyword.isEmpty() && !keyword.isBlank()) {
+            if (pno > 0
+                && (option.equals("title") || option.equals("writer") || option.equals("title_or_writer"))
+                && !keyword.isEmpty() && !keyword.isBlank()) {
                 foundBoards = boardDao.selectByTitleOrWriter(pageRequestDto, option, keyword);
             } else {
                 throw new IllegalArgumentException("This is incorrect pno or option or keyword.");
