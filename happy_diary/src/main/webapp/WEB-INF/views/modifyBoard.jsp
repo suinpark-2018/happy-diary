@@ -4,8 +4,10 @@
 <head>
     <title>Title</title>
 </head>
+<link rel="stylesheet" href="/resources/css/nav.css">
 <link rel="stylesheet" href="/recources/css/modifyBoard.css">
 <body>
+    <jsp:include page="/WEB-INF/views/include/nav.jsp"/>
     <div class="header">게시판 수정</div>
     <div class="wrapper">
         <form action="/board/modify?bno=${board.bno}&pno=${pno}" method="POST">
@@ -54,4 +56,5 @@
         </form>
     </div>
 </body>
+<script src="/resources/js/nav.js"></script>
 </html>

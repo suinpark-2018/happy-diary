@@ -3,8 +3,10 @@
 <head>
     <title>Title</title>
 </head>
+<link rel="stylesheet" href="/resources/css/nav.css">
 <link rel="stylesheet" href="/resources/css/createBoard.css"/>
 <body>
+    <jsp:include page="/WEB-INF/views/include/nav.jsp"/>
     <div class="wrapper">
         <h1>글쓰기</h1>
         <form action="/board/create" method="post">
@@ -39,4 +41,5 @@
         </form>
     </div>
 </body>
+<script src="/resources/js/nav.js"></script>
 </html>

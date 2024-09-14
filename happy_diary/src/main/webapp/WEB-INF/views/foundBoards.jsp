@@ -5,8 +5,10 @@
 <head>
     <title>Found</title>
 </head>
+<link rel="stylesheet" href="/resources/css/nav.css">
 <link rel="stylesheet" href="/resources/css/foundBoards.css">
 <body>
+    <jsp:include page="/WEB-INF/views/include/nav.jsp"/>
     <div class="wrapper">
         <h2>검색된 게시물 목록</h2>
         <div class="btn-wrapper">
@@ -59,4 +61,5 @@
         </div>
     </div>
 </body>
+<script src="/resources/js/nav.js"></script>
 </html>

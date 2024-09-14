@@ -5,14 +5,11 @@ body {
     padding: 0;
 }
 .header {
-    margin-bottom: 20px;
+    margin: 20px 0;
     padding: 15px;
     font-size: 30px;
     font-weight: bold;
-    background-color: #007bff;
-    color: white;
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .wrapper {
     max-width: 800px;
@@ -25,6 +22,7 @@ body {
 ul {
     float: right;
     color: gray;
+    margin-left: 30px;
 }
 p {
     font-size: 16px;

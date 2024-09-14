@@ -7,6 +7,7 @@
 
 <body>
     <div class="wrapper">
+        <a href="/" class="back-item">< Back</a>
         <div class="title">
             <a href="/">본인 인증</a>
         </div>

@@ -5,8 +5,10 @@
 <head>
     <title>Title</title>
 </head>
+<link rel="stylesheet" href="/resources/css/nav.css">
 <link rel="stylesheet" href="/resources/css/board.css">
 <body>
+    <jsp:include page="/WEB-INF/views/include/nav.jsp"/>
     <div class="wrapper">
         <c:if test="${visibility eq 'private'}"><h1>Private Space</h1></c:if>
         <c:if test="${visibility eq 'public'}"><h1>Shared Space</h1></c:if>
@@ -42,7 +44,7 @@
                 <c:forEach var="board" items="${boards}">
                     <tr>
                         <td>${board.bno}</td>
-                        <td><a href="/board/detail?visibility=${visibility}&bno=${board.bno}&pno=${pno}">${board.title}</a></td>
+                        <td><a href="/board/detail?visibility=${visibility}&bno=${board.bno}&pno=${param.pno}">${board.title}</a></td>
                         <td>${board.praise_target}</td>
                         <td>${board.writer}</td>
                         <td><fmt:formatDate value="${board.reg_date}" pattern="yyyy-MM-dd" /></td>
@@ -73,4 +75,5 @@
         </div>
     </div>
 </body>
+<script src="/resources/js/nav.js"></script>
 </html>
