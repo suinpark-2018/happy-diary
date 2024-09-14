@@ -669,4 +669,65 @@ class BoardDaoImplTest {
         when(mockDao.delete(bno)).thenThrow(new ConnectException("Server connection failed!"));
         assertThrows(ConnectException.class, () -> mockDao.delete(bno));
     }
+
+    @Test
+    @DisplayName("게시물 조회수 업데이트 성공")
+    void successToUpdateViewCount() throws Exception {
+        PageRequestDto pageRequestDto = new PageRequestDto(1, 10);
+        BoardDto testDto = boardDao.selectAll(pageRequestDto).get(0);
+        int bno = testDto.getBno();
+        int view_cnt = 5;
+        assertNotEquals(testDto.getView_cnt(), view_cnt);
+
+        assertEquals(1, boardDao.updateViewCnt(bno, view_cnt));
+        BoardDto updatedDto = boardDao.selectAll(pageRequestDto).get(0);
+        assertEquals(view_cnt, updatedDto.getView_cnt());
+    }
+
+    @Test
+    @DisplayName("잘못된 조회수 업데이트 시도 시 실패")
+    void failToUpdateViewCount() throws Exception {
+        PageRequestDto pageRequestDto = new PageRequestDto(1, 10);
+        BoardDto testDto = boardDao.selectAll(pageRequestDto).get(0);
+        int bno = testDto.getBno();
+        int view_cnt = 5;
+        assertEquals(1, boardDao.updateViewCnt(bno, view_cnt));
+
+        int new_view_cnt = 4;
+        if (new_view_cnt > view_cnt) {
+            assertEquals(1, boardDao.updateViewCnt(bno, view_cnt));
+        }
+
+        BoardDto updatedDto = boardDao.selectAll(pageRequestDto).get(0);
+        assertNotEquals(new_view_cnt, updatedDto.getView_cnt());
+        assertEquals(view_cnt, updatedDto.getView_cnt());
+    }
+
+    @Test
+    @DisplayName("DB 연결 실패로 인한 게시물 조회수 업데이트 실패")
+    void failToDBConnection_updateViewCount() throws Exception {
+        // 임의의 bno
+        PageRequestDto pageRequestDto = new PageRequestDto(1, 10);
+        List<BoardDto> boards = boardDao.selectAll(pageRequestDto);
+        int bno = boards.get(0).getBno();
+        int view_cnt = 5;
+
+        // count 메서드 호출 시 DB 접근 예외 발생시킴
+        when(mockDao.updateViewCnt(bno, view_cnt)).thenThrow(new DataAccessException("Database connection failed!") {});
+        assertThrows(DataAccessException.class, () -> mockDao.updateViewCnt(bno, view_cnt));
+    }
+
+    @Test
+    @DisplayName("Server 연결 실패로 인한 게시물 조회수 업데이트 실패")
+    void failToServerConnection_updateViewCoun() throws Exception {
+        // 임의의 bno
+        PageRequestDto pageRequestDto = new PageRequestDto(1, 10);
+        List<BoardDto> boards = boardDao.selectAll(pageRequestDto);
+        int bno = boards.get(0).getBno();
+        int view_cnt = 5;
+
+        // 특정 메서드 호출 시 서버 연결 예외 발생시킴
+        when(mockDao.updateViewCnt(bno, view_cnt)).thenThrow(new ConnectException("Server connection failed!"));
+        assertThrows(ConnectException.class, () -> mockDao.updateViewCnt(bno, view_cnt));
+    }
 }
