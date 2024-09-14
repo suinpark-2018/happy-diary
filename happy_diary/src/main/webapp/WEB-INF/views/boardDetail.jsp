@@ -2,15 +2,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Happy Diary</title>
 </head>
+<link rel="stylesheet" href="/resources/css/nav.css">
 <link rel="stylesheet" href="/resources/css/boardDetail.css">
 <body>
+    <jsp:include page="/WEB-INF/views/include/nav.jsp"/>
     <c:if test="${param.visibility eq 'private'}"><div class="header">For Myself</div></c:if>
     <c:if test="${param.visibility eq 'public'}"><div class="header">To Someone</div></c:if>
     <div class="wrapper">
         <ul class="visible-range"><c:if test="${param.visibility eq 'private'}">Private</c:if></ul>
         <ul class="visible-range"><c:if test="${param.visibility eq 'public'}">Public</c:if></ul>
+        <ul class="view_cnt">조회수: ${board.view_cnt}</ul>
         <br>
         <c:if test="${param.visibility eq 'public'}">
             <p class="subject">To. ${board.praise_target}</p>
@@ -92,5 +95,6 @@
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="/resources/js/nav.js"></script>
 <script src="/resources/js/boardDetail.js"></script>
 </html>
