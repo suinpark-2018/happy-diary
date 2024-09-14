@@ -82,10 +82,19 @@ public class BoardController {
         String writer = boardDto.getWriter();
         boolean isAuthor = userId.equals(writer);
 
+        // 게시물 조회수 업데이트
+        // 다른 사용자가 조회 시 1 증가
+        Integer view_cnt = boardDto.getView_cnt();
+        if (!isAuthor) {
+            view_cnt++;
+            boardService.updateCurrentViewCnt(bno, view_cnt);
+        }
+        BoardDto updatedDto = boardService.getBoard(bno);
+
         // model 객체에 데이터 담아서 view 단으로 전송
         model.addAttribute("pno", pno);
         model.addAttribute("visibility", visibility);
-        model.addAttribute("board", boardDto);
+        model.addAttribute("board", updatedDto);
         model.addAttribute("isAuthor", isAuthor);
         model.addAttribute("comments", comments);
 
