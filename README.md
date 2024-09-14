@@ -51,8 +51,8 @@
   - 게시물 조회/작성/수정/삭제
   - 게시물 검색
   - 게시물 공개 범위 설정
+  - 게시물 조회수
   - 페이징 처리
-  - 이미지 첨부
 * 관리자
   - 회원 관리
   - 게시판 관리
@@ -77,15 +77,17 @@ happy_diary
       │   │       │       ├── ValidationGroups.java
       │   │       │       └── ValidationSequence.java
       │   │       ├── controller
+      │   │       │   ├── BoardController.java
+      │   │       │   ├── CommentController.java
       │   │       │   ├── FindIdPwdController.java
+      │   │       │   ├── HomeController.java
       │   │       │   ├── LoginController.java
       │   │       │   ├── SignUpController.java
-      │   │       │   └── TestController.java
       │   │       ├── dao
       │   │       │   ├── BoardDao.java
       │   │       │   ├── BoardDaoImpl.java
-      │   │       │   ├── TestDao.java
-      │   │       │   ├── TestDaoImpl.java
+      │   │       │   ├── CommentDao.java
+      │   │       │   ├── CommentDaoImpl.java
       │   │       │   ├── UserDao.java
       │   │       │   └── UserDaoImpl.java
       │   │       ├── dto
@@ -97,8 +99,8 @@ happy_diary
       │   │       └── service
       │   │           ├── BoardService.java
       │   │           ├── BoardServiceImpl.java
-      │   │           ├── TestService.java
-      │   │           ├── TestServiceImpl.java
+      │   │           ├── CommentService.java
+      │   │           ├── CommentServiceImpl.java
       │   │           ├── UserService.java
       │   │           ├── UserServiceImpl.java
       │   │           └── mail
@@ -110,37 +112,52 @@ happy_diary
       │   │   ├── application.properties
       │   │   ├── mapper
       │   │   │   ├── BoardMapper.xml
-      │   │   │   ├── TestMapper.xml
+      │   │   │   ├── CommentMapper.xml
       │   │   │   └── UserMapper.xml
       │   │   └── mybatis-config.xml
       │   └── webapp
       │       └── WEB-INF
       │           ├── resources
       │           │   ├── css
+      │           │   │   ├── board.css
+      │           │   │   ├── boardDetail.css
+      │           │   │   ├── createBoard.css
       │           │   │   ├── findIdPwd.css
+      │           │   │   ├── foundBoard.css
       │           │   │   ├── identityVerification.css
       │           │   │   ├── index.css
       │           │   │   ├── login.css
       │           │   │   ├── main.css
+      │           │   │   ├── modifyBoard.css
       │           │   │   ├── modifyPwd.css
+      │           │   │   ├── nav.css
       │           │   │   └── register.css
       │           │   ├── img
       │           │   └── js
+      │           │       ├── boardDetail.js
       │           │       ├── findIdPwd.js
       │           │       ├── identityVerification.js
       │           │       ├── login.js
       │           │       ├── main.js
+      │           │       └── nav.js
       │           │       └── register.js
       │           ├── spring
       │           │   ├── appServlet
       │           │   │   └── servlet-context.xml
       │           │   └── root-context.xml
       │           ├── views
+      │           │   └── include
+      │           │   │   └── nav.jsp
+      │           │   ├── board.jsp
+      │           │   ├── boardDetail.jsp
+      │           │   ├── createBoard.jsp
       │           │   ├── findIdPwd.jsp
+      │           │   ├── foundBoards.jsp
       │           │   ├── identityVerification.jsp
       │           │   ├── index.jsp
       │           │   ├── login.jsp
       │           │   ├── main.jsp
+      │           │   ├── modifyBoard.jsp
       │           │   ├── modifyPwd.jsp
       │           │   └── register.jsp
       │           └── web.xml
@@ -150,9 +167,11 @@ happy_diary
                   └── happydiary
                       ├── dao
                       │   ├── BoardDaoImplTest.java
+                      │   ├── CommentImplTest.java
                       │   └── UserDaoTest.java
                       └── service
                           ├── BoardServiceImplTest.java
+                          ├── CommentServiceImplTest.java
                           └── UserServiceImplTest.java
 ```
 
