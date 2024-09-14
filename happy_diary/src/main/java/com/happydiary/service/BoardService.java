@@ -40,6 +40,9 @@ public interface BoardService {
     // 게시물 수정
     boolean modifyBoard(BoardDto boardDto);
 
+    // 게시물 조회수 업데이트
+    boolean updateCurrentViewCnt(int bno, int view_cnt);
+
     // 특정 게시물 삭제
     boolean removeBoard(int bno);
 

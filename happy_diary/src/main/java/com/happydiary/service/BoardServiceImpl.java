@@ -187,14 +187,12 @@ public class BoardServiceImpl implements BoardService {
     // 게시물 작성
     @Override
     public boolean makeBoard(BoardDto boardDto) {
-        boolean isSuccess = true;
+        boolean isSuccess = false;
         try {
-            int result = boardDao.insert(boardDto);
-            if (result != 1) {
-                isSuccess = false;
+            if (boardDao.insert(boardDto) == 1) {
+                isSuccess = true;
             }
         } catch (Exception e) {
-            isSuccess = false;
             e.getMessage();
             e.printStackTrace();
         }
@@ -204,15 +202,30 @@ public class BoardServiceImpl implements BoardService {
     // 게시물 수정
     @Override
     public boolean modifyBoard(BoardDto boardDto) {
-        boolean isSuccess = true;
+        boolean isSuccess = false;
         try {
-            if (boardDao.update(boardDto) != 1) {
-                isSuccess = false;
+            if (boardDao.update(boardDto) == 1) {
+                isSuccess = true;
             }
         } catch (Exception e) {
-            isSuccess = false;
             e.getMessage();
             e.printStackTrace();
+        }
+        return isSuccess;
+    }
+
+    // 게시물 조회수 업데이트
+    @Override
+    public boolean updateCurrentViewCnt(int bno, int view_cnt) {
+        boolean isSuccess = false;
+        try {
+            if (view_cnt > boardDao.select(bno).getView_cnt()) {
+                boardDao.updateViewCnt(bno, view_cnt);
+                isSuccess = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getMessage();
         }
         return isSuccess;
     }
@@ -220,15 +233,15 @@ public class BoardServiceImpl implements BoardService {
     // 특정 게시물 삭제
     @Override
     public boolean removeBoard(int bno) {
-        boolean isSuccess = true;
+        boolean isSuccess = false;
         try {
             if (bno > 0 && boardDao.select(bno) != null) {
                 boardDao.delete(bno);
+                isSuccess = true;
             } else {
                 throw new IllegalArgumentException("Board number must be greater than 0");
             }
         } catch (Exception e) {
-            isSuccess = false;
             e.getMessage();
             e.printStackTrace();
         }
@@ -238,13 +251,12 @@ public class BoardServiceImpl implements BoardService {
     // 전체 게시물 삭제
     @Override
     public boolean removeAllBoards() {
-        boolean isSuccess = true;
+        boolean isSuccess = false;
         try {
-            if (boardDao.deleteAll() == 0) {
-                isSuccess = false;
+            if (boardDao.deleteAll() > 0) {
+                isSuccess = true;
             }
         } catch (Exception e) {
-            isSuccess = false;
             e.printStackTrace();
             e.getMessage();
         }
