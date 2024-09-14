@@ -96,6 +96,12 @@
         WHERE bno = #{bno}
     </update>
 
+    <update id="updateViewCnt" parameterType="Map">
+        UPDATE board
+        SET view_cnt = #{view_cnt}
+        WHERE bno = #{bno}
+    </update>
+
     <update id="delete" parameterType="Integer">
         UPDATE board
         SET is_active = 'N'
