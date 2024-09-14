@@ -462,4 +462,39 @@ class BoardServiceImplTest {
         testDto.setTitle(overLengthTitle);
         assertFalse(boardService.modifyBoard(testDto));
     }
+
+    @Test
+    @DisplayName("게시물 조회수 업데이트 성공")
+    void successToUpdateViewCount() {
+        BoardDto bfDto = boardService.getListOfBoards(1).get(0);
+        int bno = bfDto.getBno();
+        int view_cnt = 1;
+        assertNotEquals(view_cnt, bfDto.getView_cnt());
+
+        assertTrue(boardService.updateCurrentViewCnt(bno, view_cnt));
+
+        BoardDto afDto = boardService.getListOfBoards(1).get(0);
+        assertEquals(view_cnt, afDto.getView_cnt());
+    }
+
+    @Test
+    @DisplayName("잘못된 조회수로 게시물 조회수 업데이트 시도 시 실패")
+    void failToUpdateViewCount_wrongViewCnt() {
+        BoardDto bfDto = boardService.getListOfBoards(1).get(0);
+        int bno = bfDto.getBno();
+        int view_cnt = 5;
+        assertNotEquals(view_cnt, bfDto.getView_cnt());
+        assertTrue(boardService.updateCurrentViewCnt(bno, view_cnt));
+
+        int wrong_view_cnt = 4;
+        assertFalse(boardService.updateCurrentViewCnt(bno, wrong_view_cnt));
+    }
+
+    @Test
+    @DisplayName("잘못된 게시물 번호로 조회수 업데이트 시도 시 실패")
+    void failToUpdateViewCount_wrongBno() {
+        int bno = 0; // 존재하지 않는 Bno
+        int view_cnt = 1;
+        assertFalse(boardService.updateCurrentViewCnt(bno, view_cnt));
+    }
 }
