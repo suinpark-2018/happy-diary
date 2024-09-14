@@ -39,6 +39,9 @@ public interface BoardDao {
     // 게시물 수정
     int update(BoardDto boardDto) throws Exception;
 
+    // 게시물 조회수 업데이트
+    int updateViewCnt(int bno, int view_cnt) throws Exception;
+
     // 게시물 삭제
     int delete(Integer bno) throws Exception;
 

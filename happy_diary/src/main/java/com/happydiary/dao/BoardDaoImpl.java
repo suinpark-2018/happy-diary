@@ -117,6 +117,15 @@ public class BoardDaoImpl implements BoardDao {
         return session.update(namespace + "update", boardDto);
     }
 
+    // 게시물 조회수 업데이트
+    @Override
+    public int updateViewCnt(int bno, int view_cnt) throws Exception {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("bno", bno);
+        map.put("view_cnt", view_cnt);
+        return session.update(namespace + "updateViewCnt", map);
+    }
+
     // 게시물 삭제
     // is_active Y -> N 으로 업데이트 하여 일정 기간동안 보관
     @Override
