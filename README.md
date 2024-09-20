@@ -18,7 +18,7 @@
 ## 📁 ERD
 ### 3 Tables
 #### 📌 상세 구조
-<img width="1135" alt="ERD" src="https://github.com/user-attachments/assets/b025d908-96bf-4822-961a-944ffddee235">
+<img width="1135" alt="ERD" src="https://github.com/user-attachments/assets/a22f7020-be63-4b2e-8079-d330695ccbdf">
 
 </br></br>
 
