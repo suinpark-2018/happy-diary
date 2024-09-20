@@ -1,0 +1,174 @@
+body, h2, p, input, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+}
+
+.header {
+    width: 100%;
+    margin: 25px 0;
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid gray;
+    border-radius: 2px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 10px;
+    vertical-align: middle;
+    font-size: 16px;
+    color: #333;
+    margin: 0 10px 0 0;
+}
+
+td:first-of-type {
+    font-weight: bold;
+    padding-left: 25px;
+}
+
+td:nth-of-type(2) {
+    padding-left: 20px;
+}
+
+td:nth-of-type(3) {
+    display: flex;
+    justify-content: center;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"] {
+    width: 100%;
+    max-width: 400px; /* 원하는 최대 너비 설정 */
+    min-width: 300px; /* 원하는 최소 너비 설정 */
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    height: 40px; /* 고정 높이 설정 */
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+p[id$="-error-msg"] {
+    width: 100%;  /* 너비를 100%로 고정 */
+    max-width: 400px; /* 오류 메시지 너비 고정 */
+    white-space: nowrap; /* 텍스트가 줄 바꿈되지 않도록 설정 */
+    overflow: hidden; /* 오류 메시지가 길어지면 숨김 처리 */
+    text-overflow: ellipsis; /* 오류 메시지가 너무 길면 말줄임 표시 */
+}
+
+
+input[type="radio"] {
+    transform: scale(0.8); /* 크기를 조정 */
+    margin-right: 5px; /* 라벨과 간격 조정 */
+    vertical-align: middle; /* 텍스트와 일렬로 정렬 */
+}
+
+label {
+    margin-right: 20px;
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    height: 40px; /* 고정 높이 설정 */
+    float: right;
+    margin: 17px 0 20px 10px;
+}
+
+button[type="button"] {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+button[type="button"]:hover {
+    background-color: #5a6268;
+}
+
+button[type="submit"] {
+    background-color: #f44336;
+    color: #fff;
+    margin-right: 25px;
+}
+
+button[type="submit"]:hover {
+    background-color: #d32f2f;
+}
+
+button:disabled {
+    background-color: #b0b0b0;
+    cursor: not-allowed;
+}
+
+#checkDuplicateBtn {
+    background-color: #f44336;
+}
+
+#checkDuplicateBtn:hover {
+    background-color: #d32f2f;
+}
+
+.button-group {
+    display: flex;
+    justify-content: flex-end; /* 버튼들을 오른쪽으로 정렬 */
+    gap: 10px; /* 버튼들 간격 조정 */
+    margin-top: 20px; /* 버튼 상단 여백 */
+}
+
+#id-msg {
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    margin: 3px 0 0 3px;
+}
+
+#id-msg.success-msg {
+    color: #007BFF;
+}
+
+#id-msg.duplicate-msg {
+    color: #dc3545;
+}
+
+#id-error-msg, #pwd-length-error-msg, #match-error-msg, #name-error-msg, #mobile-number-error-msg, #email-error-msg {
+    font-size: 15px;
+    display: flex;
+    align-items: flex-end;
+    color: #dc3545;
+    margin: 3px 0 0 3px;
+}

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.happydiary.dao.CommentDao">
+    <select id="countAll" resultType="int">
+        SELECT COUNT(*) FROM comment
+    </select>
+
+    <select id="countActiveCmt" resultType="int">
+        SELECT COUNT(*) FROM comment
+        WHERE status = 'Y'
+    </select>
+
+    <insert id="insert" parameterType="CommentDto">
+        INSERT INTO comment (bno, parent_cno, writer, content, status, reg_id, reg_date)
+        VALUES (#{bno}, #{parent_cno}, #{writer}, #{content}, 'Y', #{writer}, NOW())
+    </insert>
+
+    <select id="select" parameterType="int" resultType="CommentDto">
+        SELECT * FROM comment
+        WHERE cno = #{cno} AND status = 'Y'
+    </select>
+
+    <select id="selectActiveAll" resultType="CommentDto">
+        SELECT * FROM comment
+        WHERE status = 'Y'
+        ORDER BY reg_date DESC
+    </select>
+
+    <select id="selectAllComment" parameterType="int" resultType="CommentDto">
+        SELECT * FROM comment
+        WHERE bno = #{bno} AND status = 'Y'
+        ORDER BY reg_date DESC
+    </select>
+
+    <select id="selectAllReply" parameterType="int" resultType="CommentDto">
+        SELECT * FROM comment
+        WHERE parent_cno = #{cno} AND status = 'Y'
+        ORDER BY reg_date DESC
+    </select>
+
+    <update id="update" parameterType="CommentDto">
+        UPDATE comment
+        SET content = #{content}, up_id = #{writer}, up_date = NOW()
+        WHERE cno = #{cno}
+    </update>
+
+    <update id="delete" parameterType="int">
+        UPDATE comment
+        SET status = 'N'
+        WHERE cno = #{cno} OR parent_cno = #{cno}
+    </update>
+
+<!--    <delete id="delete" parameterType="int">-->
+<!--        DELETE FROM comment-->
+<!--        WHERE cno = #{cno} OR parent_cno = #{cno}-->
+<!--    </delete>-->
+
+    <delete id="deleteAll">
+        DELETE FROM comment
+    </delete>
+</mapper>

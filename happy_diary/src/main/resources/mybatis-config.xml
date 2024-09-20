@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias alias="UserDto" type="com.happydiary.dto.UserDto"/>
+        <typeAlias alias="BoardDto" type="com.happydiary.dto.BoardDto"/>
+        <typeAlias alias="CommentDto" type="com.happydiary.dto.CommentDto"/>
+        <typeAlias alias="PageRequestDto" type="com.happydiary.dto.PageRequestDto"/>
+        <typeAlias alias="PageResponseDto" type="com.happydiary.dto.PageResponseDto"/>
+    </typeAliases>
+</configuration>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- spring MVC 처리를 위한 annotation tag -->
+    <!-- Spring MVC 에서 annotation 을 사용하여 설정된 컨트롤러, 핸들러 매핑, 기타 구성 요소들을 활성화 (@Controller, @RequestMapping 등) -->
+    <mvc:annotation-driven/>
+
+    <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
+
+    <!-- Spring MVC 에서 설정된 URL 패턴이 아닌 모든 요청을 기본 서블릿으로 포워딩. 정적 리소스(이미지, CSS 파일 등)에 대한 요청 처리 시 유용 -->
+    <mvc:default-servlet-handler/>
+
+    <!-- 지정된 패키지에서 Spring 빈으로 등록할 클래스를 자동으로 검색하고 등록
+         주로 @Controller, @Service, @Repository 와 같은 어노테이션 붙은 클래스들 자동 등록 -->
+    <context:component-scan base-package="com.happydiary"/>
+
+    <!-- Controller 에서 반환하는 View 이름을 실제 JSP 파일 경로로 mapping -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+</beans>

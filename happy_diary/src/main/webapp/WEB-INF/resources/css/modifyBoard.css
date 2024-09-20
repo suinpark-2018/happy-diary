@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+.header {
+    margin-bottom: 20px;
+    padding: 15px;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    border-bottom: 3px solid gray;
+}
+.wrapper {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+table {
+    width: 100%;
+    margin-top: 20px;
+}
+td {
+    padding: 10px;
+    vertical-align: top;
+}
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+    height: 150px;
+}
+.actions {
+    text-align: right;
+    margin-top: 20px;
+}
+.actions button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.actions button:hover {
+    background-color: #0056b3;
+}
+.actions button.cancel {
+    background-color: #6c757d;
+}
+.actions button.cancel:hover {
+    background-color: #5a6268;
+}

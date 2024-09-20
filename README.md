@@ -18,7 +18,7 @@
 ## 📁 ERD
 ### 3 Tables
 #### 📌 상세 구조
-<img width="1135" alt="ERD" src="https://github.com/user-attachments/assets/b025d908-96bf-4822-961a-944ffddee235">
+<img width="1135" alt="ERD" src="https://github.com/user-attachments/assets/a22f7020-be63-4b2e-8079-d330695ccbdf">
 
 </br></br>
 
@@ -42,11 +42,17 @@
 
 ## 🔮 주요 기능
 * 회원가입
+  - 이메일 본인인증
+  - 아이디 중복 확인
 * 로그인/로그아웃
+  - SNS 간편 로그인
+  - 아이디/비밀번호 찾기
 * 게시판
-  - 개인 칭찬 공간
-  - 공용 칭찬 공간
-  - 공지사항
+  - 게시물 조회/작성/수정/삭제
+  - 게시물 검색
+  - 게시물 공개 범위 설정
+  - 게시물 조회수
+  - 페이징 처리
 * 관리자
   - 회원 관리
   - 게시판 관리
@@ -63,33 +69,110 @@ happy_diary
       ├── main
       │   ├── java
       │   │   └── com
-      │   │       └── diary
-      │   │             ├── controller
-      │   │             │   └── TestController.java
-      │   │             ├── dao
-      │   │             │   ├── TestDao.java
-      │   │             │   └── TestDaoImpl.java
-      │   │             ├── domain
-      │   │             │   └── CategoryDto.java
-      │   │             └── service
-      │   │                 ├── TestService.java
-      │   │                 └── TestServiceImpl.java
+      │   │   └── happydiary
+      │   │       ├── common
+      │   │       │   ├── exception
+      │   │       │   │   └── GlobalExceptionHandler.java
+      │   │       │   └── validation
+      │   │       │       ├── ValidationGroups.java
+      │   │       │       └── ValidationSequence.java
+      │   │       ├── controller
+      │   │       │   ├── BoardController.java
+      │   │       │   ├── CommentController.java
+      │   │       │   ├── FindIdPwdController.java
+      │   │       │   ├── HomeController.java
+      │   │       │   ├── LoginController.java
+      │   │       │   ├── SignUpController.java
+      │   │       ├── dao
+      │   │       │   ├── BoardDao.java
+      │   │       │   ├── BoardDaoImpl.java
+      │   │       │   ├── CommentDao.java
+      │   │       │   ├── CommentDaoImpl.java
+      │   │       │   ├── UserDao.java
+      │   │       │   └── UserDaoImpl.java
+      │   │       ├── dto
+      │   │       │   ├── BoardDto.java
+      │   │       │   ├── CommentDto.java
+      │   │       │   ├── PageRequestDto.java
+      │   │       │   ├── PageResponseDto.java
+      │   │       │   └── UserDto.java
+      │   │       └── service
+      │   │           ├── BoardService.java
+      │   │           ├── BoardServiceImpl.java
+      │   │           ├── CommentService.java
+      │   │           ├── CommentServiceImpl.java
+      │   │           ├── UserService.java
+      │   │           ├── UserServiceImpl.java
+      │   │           └── mail
+      │   │               ├── MailHandler.java
+      │   │               ├── MailService.java
+      │   │               ├── MockMailSender.java
+      │   │               └── TempKey.java
       │   ├── resources
+      │   │   ├── application.properties
       │   │   ├── mapper
-      │   │   │   └── TestMapper.xml
+      │   │   │   ├── BoardMapper.xml
+      │   │   │   ├── CommentMapper.xml
+      │   │   │   └── UserMapper.xml
       │   │   └── mybatis-config.xml
       │   └── webapp
-      │       ├── WEB-INF
-      │       │   ├── spring
-      │       │   │   ├── appServlet
-      │       │   │   │   └── servlet-context.xml
-      │       │   │   └── root-context.xml
-      │       │   ├── views
-      │       │   │   └── index.jsp
-      │       │   └── web.xml
-      │       └── resources
+      │       └── WEB-INF
+      │           ├── resources
+      │           │   ├── css
+      │           │   │   ├── board.css
+      │           │   │   ├── boardDetail.css
+      │           │   │   ├── createBoard.css
+      │           │   │   ├── findIdPwd.css
+      │           │   │   ├── foundBoard.css
+      │           │   │   ├── identityVerification.css
+      │           │   │   ├── index.css
+      │           │   │   ├── login.css
+      │           │   │   ├── main.css
+      │           │   │   ├── modifyBoard.css
+      │           │   │   ├── modifyPwd.css
+      │           │   │   ├── nav.css
+      │           │   │   └── register.css
+      │           │   ├── img
+      │           │   └── js
+      │           │       ├── boardDetail.js
+      │           │       ├── findIdPwd.js
+      │           │       ├── identityVerification.js
+      │           │       ├── login.js
+      │           │       ├── main.js
+      │           │       └── nav.js
+      │           │       └── register.js
+      │           ├── spring
+      │           │   ├── appServlet
+      │           │   │   └── servlet-context.xml
+      │           │   └── root-context.xml
+      │           ├── views
+      │           │   └── include
+      │           │   │   └── nav.jsp
+      │           │   ├── board.jsp
+      │           │   ├── boardDetail.jsp
+      │           │   ├── createBoard.jsp
+      │           │   ├── findIdPwd.jsp
+      │           │   ├── foundBoards.jsp
+      │           │   ├── identityVerification.jsp
+      │           │   ├── index.jsp
+      │           │   ├── login.jsp
+      │           │   ├── main.jsp
+      │           │   ├── modifyBoard.jsp
+      │           │   ├── modifyPwd.jsp
+      │           │   └── register.jsp
+      │           └── web.xml
       └── test
-
+          └── java
+              └── com
+                  └── happydiary
+                      ├── dao
+                      │   ├── BoardDaoImplTest.java
+                      │   ├── CommentImplTest.java
+                      │   └── UserDaoTest.java
+                      └── service
+                          ├── BoardServiceImplTest.java
+                          ├── CommentServiceImplTest.java
+                          └── UserServiceImplTest.java
 ```
 
 </br>
@@ -113,7 +196,7 @@ Docs        :     문서 추가 또는 수정 (ex. README 변경)
 Chore       :     패키지 매니저(ex. gitignore 수정), 빌드 업무 수정 
 Refactor    :     리팩토링, 코드 개선
 Fix         :     버그 수정
-Style       :     코드 스타일 변경 (포맷팅, 세미콜론 누락 등 코드 변경이 없는 경우)
+Style       :     코드 스타일 변경 (포맷팅, 공백 제거, 세미콜론 누락 등 코드 변경이 없는 경우)
 Comment     :     주석 추가 및 수정
 Rename      :     파일 또는 폴더명을 수정하거나 이동하는 작업만 수행한 경우
 Remove      :     파일을 삭제하는 작업만 수행한 경우
