@@ -29,7 +29,7 @@
                 <ul>
                     <li><a href="#">회원정보 수정</a></li>
                     <li><a href="#" id="logout">로그아웃</a></li>
-                    <li><a href="#">회원탈퇴</a></li>
+                    <li><a href="#" id="accountDeletion">회원탈퇴</a></li>
                 </ul>
             </li>
         </ul>
