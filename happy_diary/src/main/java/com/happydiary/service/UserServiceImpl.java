@@ -184,5 +184,24 @@ public class UserServiceImpl implements UserService {
         }
         return successToModify;
     }
-    
+
+    // 6. 회원탈퇴
+    // 6.1. 특정 아이디로 조회된 결과값 검증
+    // 6.1.1. 사용자 아이디값 제대로 전달 받았는지(빈문자열이거나 공백만 존재하는지) 확인
+    // 6.1.1. 해당 아이디가 존재하는 아이디인지 확인
+    // 6.2. 탈퇴처리
+    @Override
+    public boolean deleteUserAccount(String id) {
+        boolean successToUpdate = false;
+        try {
+            if ((!id.isEmpty() || !id.isBlank()) && (userDao.select(id) != null)) {
+                userDao.updateDelStatus(id);
+                successToUpdate = true;
+            }
+        } catch (Exception e) {
+            e.getMessage();
+            e.printStackTrace();
+        }
+        return successToUpdate;
+    }
 }

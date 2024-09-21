@@ -50,4 +50,9 @@ public interface UserService {
     // 5.2.1. 사용자가 입력한 아이디와 이메일로 조회한 정보를 비교 및 확인
     // 5.2.2. 새로운 비밀번호로 변경
     boolean modifyPassword(String id, String pwd);
+
+    // 6. 회원탈퇴
+    // 6.1. 사용자 ID 값 제대로 전달 받았는지 확인
+    // 6.2. 탈퇴처리
+    boolean deleteUserAccount(String id);
 }
