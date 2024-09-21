@@ -566,4 +566,39 @@ class UserDaoTest {
         // 설정된 예외 발생여부 확인
         assertThrows(DataAccessException.class, () -> mockDao.selectByEmail(inputEmail));
     }
+
+    @Test
+    @DisplayName("회원 탈퇴여부 수정 성공")
+    void successToUpdateDelStatus() throws Exception {
+        String id = "user1";
+        UserDto testDto = userDao.select(id);
+
+        assertNotNull(testDto);
+        assertEquals("N", testDto.getDel_status());
+        assertNull(testDto.getUp_id());
+        assertNull(testDto.getUp_date());
+
+        assertEquals(1, userDao.updateDelStatus(id));
+        assertNull(userDao.select(id));
+    }
+
+    @Test
+    @DisplayName("존재하지 않는 아이디로 인한 회원 탈퇴여부 수정 실패")
+    void failToUpdateDelStatus() throws Exception {
+        String id = "wrongId";
+        UserDto testDto = userDao.select(id);
+        assertNull(testDto);
+
+        assertEquals(0, userDao.updateDelStatus(id));
+    }
+
+    @Test
+    @DisplayName("DB 연결 실패로 인한 회원 탈퇴여부 수정 실패")
+    void failToDBConnection_updateDelStatus() throws Exception {
+        // updateDelStatus() 호출 시 DB 접근 예외 발생시킴
+        String id = "user1";
+        when(mockDao.updateDelStatus(id)).thenThrow(new DataAccessException("Database connection error!"){});
+        // 설정된 예외 발생여부 확인
+        assertThrows(DataAccessException.class, () -> mockDao.updateDelStatus(id));
+    }
 }
