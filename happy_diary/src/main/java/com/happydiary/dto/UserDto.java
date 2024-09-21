@@ -47,8 +47,9 @@ public class UserDto {
     @NotBlank(message = "주소가 입력되지 않았습니다.", groups = ValidationGroups.NotBlankGroup.class)
     String address; // 주소
 
-    String join_state; // 가입 상태
-    String remark; // 비고
+    String del_status; // 탈퇴여부
+    String del_date;  // 탈퇴일자
+    String remark;    // 비고
     String recent_login; // 최근 접속일
 
     // 시스템 컬럼 데이터
@@ -77,10 +78,11 @@ public class UserDto {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", phone_num='" + phone_num + '\'' +
-                ", birth=" + birth +
+                ", birth='" + birth + '\'' +
                 ", gender='" + gender + '\'' +
                 ", address='" + address + '\'' +
-                ", join_state='" + join_state + '\'' +
+                ", del_state='" + del_status + '\'' +
+                ", del_date='" + del_date + '\'' +
                 ", remark='" + remark + '\'' +
                 ", recent_login='" + recent_login + '\'' +
                 ", reg_id='" + reg_id + '\'' +
