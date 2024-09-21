@@ -27,6 +27,9 @@ public interface UserDao {
     // 3.1. 특정 회원 정보 수정
     int update(UserDto userDto) throws Exception;
 
+    // 3.2. 특정 회원 탈퇴 처리
+    int updateDelStatus(String id) throws Exception;
+
     // 4.1. 특정 회원 정보 삭제
     int delete(String id) throws Exception;
 

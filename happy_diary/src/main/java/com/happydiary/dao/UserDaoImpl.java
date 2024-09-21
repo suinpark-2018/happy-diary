@@ -63,6 +63,12 @@ public class UserDaoImpl implements UserDao {
         return session.update(namespace + "update", userDto);
     }
 
+    // 3.2. 특정 회원 탈퇴 처리
+    @Override
+    public int updateDelStatus(String id) throws Exception {
+        return session.update(namespace + "updateDelStatus", id);
+    }
+
     // 4.1. 특정 회원 정보 삭제
     @Override
     public int delete(String id) throws Exception {
