@@ -19,19 +19,33 @@ body {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
-ul {
-    float: right;
+.wrapper ul {
+    text-align: right;
     color: gray;
     margin-left: 30px;
 }
-p {
+.view_cnt {
+    color: black;
     font-size: 16px;
-    font-weight: bold;
-    margin: 20px 5px;
+    margin: 40px 0;
+}
+p {
+    margin: 10px 5px;
+    white-space: pre-wrap;
 }
 .subject {
     font-size: 20px;
-    margin: 20px 0 40px;
+    font-weight: bold;
+    margin: 20px 5px 40px;
+}
+.title, .content {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 2;
+}
+.title-box, .content-box {
+    border: solid 1px gray;
+    padding: 10px;
 }
 span {
     font-size: 16px;
@@ -45,7 +59,7 @@ span {
 }
 .actions {
     text-align: right;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 .actions a {
     text-decoration: none;

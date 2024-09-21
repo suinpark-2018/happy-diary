@@ -27,12 +27,12 @@
         </div>
         <div class="btn-wrapper">
             <a href="/board/home" class="btn">HOME</a>
-            <a href="/board/create" class="btn">글쓰기</a>
+            <a href="/board/create?visibility=${visibility}" class="btn">글쓰기</a>
         </div>
         <table class="board">
             <thead>
                 <tr>
-                    <th>No.</th>
+<%--                    <th>No.</th>--%>
                     <th>제목</th>
                     <th>To.X</th>
                     <th>작성자</th>
@@ -43,7 +43,7 @@
             <tbody>
                 <c:forEach var="board" items="${boards}">
                     <tr>
-                        <td>${board.bno}</td>
+<%--                        <td>${board.bno}</td>--%>
                         <td><a href="/board/detail?visibility=${visibility}&bno=${board.bno}&pno=${param.pno}">${board.title}</a></td>
                         <td>${board.praise_target}</td>
                         <td>${board.writer}</td>

@@ -32,6 +32,11 @@ input[type="text"] {
     border-radius: 4px;
     box-sizing: border-box;
 }
+#writer {
+    padding: 10px 0;
+    border: none;
+    font-size: 16px;
+}
 textarea {
     width: 100%;
     padding: 10px;
@@ -40,6 +45,12 @@ textarea {
     box-sizing: border-box;
     resize: vertical;
     height: 150px;
+}
+input[type="radio"] {
+    margin-right: 10px;
+}
+.visibility-type {
+    margin-right: 50px;
 }
 button {
     display: block;

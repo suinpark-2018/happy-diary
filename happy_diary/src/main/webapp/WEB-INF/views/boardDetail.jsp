@@ -13,13 +13,17 @@
     <div class="wrapper">
         <ul class="visible-range"><c:if test="${param.visibility eq 'private'}">Private</c:if></ul>
         <ul class="visible-range"><c:if test="${param.visibility eq 'public'}">Public</c:if></ul>
-        <ul class="view_cnt">조회수: ${board.view_cnt}</ul>
         <br>
         <c:if test="${param.visibility eq 'public'}">
             <p class="subject">To. ${board.praise_target}</p>
         </c:if>
-        <p class="title">제목</p><span>${board.title}</span><br>
-        <p class="content">내용</p><span>${board.content}</span>
+        <p class="title">제목</p>
+        <p class="title-box">${board.title}</p><br>
+        <p class="content">내용</p>
+        <p class="content-box">${board.content}</p>
+
+        <ul class="view_cnt">조회수: ${board.view_cnt}</ul>
+
         <div class="actions">
             <a href="/board/list?visibility=${param.visibility}&pno=${param.pno}">목록</a>
             <c:if test="${isAuthor}">
