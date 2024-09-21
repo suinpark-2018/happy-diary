@@ -33,7 +33,6 @@ public class SignUpController {
     @PostMapping("/verificationEmail")
     @ResponseBody
     public ResponseEntity<String> verificationEmail(@RequestBody @Validated(ValidationGroups.EmailCheckGroup.class) UserDto userDto, HttpServletRequest request) {
-        System.out.println("출력결과: mapping 성공!! => " + userDto.getEmail());
         // 사용자가 입력한 이메일
         String email = userDto.getEmail();
 
@@ -46,7 +45,7 @@ public class SignUpController {
 
         try {
             String selectedId = userService.findIdByEmail(email);
-            if (selectedId.isEmpty() || selectedId.isEmpty()) {
+            if (selectedId.isEmpty() || selectedId.isBlank()) {
                 if (userService.sendVerificationEmail(email, mailKey)) {
                     session.setAttribute("mailKey", mailKey); // 세션에 인증번호 저장
                     session.setMaxInactiveInterval(60); // 세션 만료 시간 설정(1분)
