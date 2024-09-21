@@ -16,18 +16,18 @@
     <!-- 회원 정보 저장 -->
     <insert id="insert" parameterType="UserDto">
         INSERT INTO user (
-            id, pwd, name, email, phone_num, birth, gender, address, join_state, recent_login, reg_id, reg_date
+            id, pwd, name, email, phone_num, birth, gender, address, del_status, recent_login, reg_id, reg_date
         )
         VALUES (
-            #{id}, #{pwd}, #{name}, #{email}, #{phone_num}, #{birth}, #{gender}, #{address}, 'Y',  NOW(), #{id}, Now()
+            #{id}, #{pwd}, #{name}, #{email}, #{phone_num}, #{birth}, #{gender}, #{address}, 'N',  NOW(), #{id}, NOW()
                )
     </insert>
 
     <!-- 특정 회원 정보 조회 -->
-    <!-- 아이디로 조회 -->
+    <!-- 아이디로 조회 (탈퇴하지 않은 회원만) -->
     <select id="select" parameterType="String" resultType="UserDto">
         SELECT * FROM user
-        WHERE id = #{id}
+        WHERE id = #{id} AND del_status = 'N'
     </select>
 
     <!-- 이메일로 조회 -->
@@ -45,6 +45,13 @@
     <update id="update" parameterType="UserDto">
         UPDATE user
         SET pwd = #{pwd}, email = #{email}, phone_num = #{phone_num}, address = #{address}, up_id = #{id}, up_date = NOW()
+        WHERE id = #{id}
+    </update>
+
+    <!-- 회원탈퇴 -->
+    <update id="updateDelStatus" parameterType="String">
+        UPDATE user
+        SET del_status = 'Y', del_date = NOW(), up_id = #{id}, up_date = NOW()
         WHERE id = #{id}
     </update>
 
