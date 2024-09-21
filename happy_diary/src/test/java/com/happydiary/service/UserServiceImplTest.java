@@ -267,4 +267,26 @@ class UserServiceImplTest {
         // 비밀번호 변경
         assertFalse(userService.modifyPassword(inputId, inputPwd));
     }
+
+    @Test
+    @DisplayName("회원탈퇴 처리 성공")
+    void successToDeleteUserAccount() {
+        String id = "user1";
+        UserDto testDto = userService.getUserInfo(id);
+        assertNotNull(testDto);
+        assertEquals("N", testDto.getDel_status());
+
+        assertTrue(userService.deleteUserAccount(id));
+
+        UserDto deletedUser = userService.getUserInfo(id);
+        assertNull(deletedUser);
+    }
+
+    @Test
+    @DisplayName("잘못된 아이디의 회원 탈퇴 처리 시 실패")
+    void failToDeleteUserAccount() {
+        String id = "wrongId";
+        assertNull(userService.getUserInfo(id));
+        assertFalse(userService.deleteUserAccount(id));
+    }
 }
