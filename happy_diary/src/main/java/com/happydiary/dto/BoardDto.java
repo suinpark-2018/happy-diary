@@ -17,7 +17,7 @@ public class BoardDto {
     String writer;
     String praise_target;
     String is_public;
-    String is_active;
+    String del_status;
     Integer view_cnt;
     Integer comment_cnt;
     String is_notice;
@@ -57,7 +57,7 @@ public class BoardDto {
                 ", writer='" + writer + '\'' +
                 ", praise_target='" + praise_target + '\'' +
                 ", is_public='" + is_public + '\'' +
-                ", is_active='" + is_active + '\'' +
+                ", del_status='" + del_status + '\'' +
                 ", view_cnt=" + view_cnt +
                 ", comment_cnt=" + comment_cnt +
                 ", is_notice='" + is_notice + '\'' +

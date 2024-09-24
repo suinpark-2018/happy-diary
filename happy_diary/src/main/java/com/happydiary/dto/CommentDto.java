@@ -15,7 +15,7 @@ public class CommentDto {
     Integer parent_cno; // 상위 댓글
     String writer; // 작성자
     String content; // 내용
-    String status; // 삭제여부
+    String del_status; // 삭제여부
 
     // 시스템 컬럼
     String reg_id;

@@ -14,14 +14,14 @@
 
     <select id="selectAll" parameterType="PageRequestDto" resultType="BoardDto">
         SELECT * FROM board
-        WHERE is_active = 'Y'
+        WHERE del_status = 'N'
         ORDER BY bno DESC
         LIMIT #{skip}, #{size}
     </select>
 
     <select id="countSelectedRow" parameterType="Map" resultType="int">
         SELECT COUNT(*) FROM board
-        WHERE is_active = 'Y' AND 1 = 1
+        WHERE del_status = 'N' AND 1 = 1
             <if test='option != null and option == "title"'>
                 AND title LIKE CONCAT('%', #{keyword}, '%')
             </if>
@@ -35,7 +35,7 @@
 
     <select id="selectByTitleOrWriter" parameterType="Map" resultType="BoardDto">
         SELECT * FROM board
-        WHERE is_active = 'Y' AND 1 = 1
+        WHERE del_status = 'N' AND 1 = 1
         <if test='option != null and option == "title"'>
             AND title LIKE CONCAT('%', #{keyword}, '%')
         </if>
@@ -51,7 +51,7 @@
 
     <select id="countSelectedRowByVisibleScope" parameterType="map" resultType="int">
         SELECT COUNT(*) FROM board
-        WHERE is_active = 'Y' AND 1 = 1
+        WHERE del_status = 'N' AND 1 = 1
         <if test= 'visibility == "public"'>
             AND is_public = 'Y'
         </if>
@@ -62,7 +62,7 @@
 
     <select id="selectByVisibleScope" parameterType="Map" resultType="BoardDto">
         SELECT * FROM board
-        WHERE is_active = 'Y' AND 1 = 1
+        WHERE del_status = 'N' AND 1 = 1
             <if test= 'visibility == "public"'>
                 AND is_public = 'Y'
             </if>
@@ -75,19 +75,19 @@
 
     <select id="countSelectedRowByTarget" parameterType="String" resultType="int">
         SELECT COUNT(*) FROM board
-        WHERE praise_target LIKE CONCAT('%', #{praise_target}, '%') AND is_active = 'Y'
+        WHERE praise_target LIKE CONCAT('%', #{praise_target}, '%') AND del_status = 'N'
     </select>
 
     <select id="selectByTarget" parameterType="Map" resultType="BoardDto">
         SELECT * FROM board
-        WHERE praise_target LIKE CONCAT('%', #{praise_target}, '%') AND is_active = 'Y'
+        WHERE praise_target LIKE CONCAT('%', #{praise_target}, '%') AND del_status = 'N'
         ORDER BY bno DESC
         LIMIT #{skip}, #{size}
     </select>
 
     <insert id="insert" parameterType="BoardDto">
-        INSERT INTO board (title, content, img_path, writer, praise_target, is_public, is_active, is_notice, reg_id, reg_date)
-        VALUES (#{title}, #{content}, #{img_path}, #{writer}, #{praise_target}, #{is_public}, 'Y', #{is_notice}, #{writer}, NOW())
+        INSERT INTO board (title, content, img_path, writer, praise_target, is_public, del_status, is_notice, reg_id, reg_date)
+        VALUES (#{title}, #{content}, #{img_path}, #{writer}, #{praise_target}, #{is_public}, 'N', #{is_notice}, #{writer}, NOW())
     </insert>
 
     <update id="update" parameterType="BoardDto">
@@ -104,7 +104,7 @@
 
     <update id="delete" parameterType="Integer">
         UPDATE board
-        SET is_active = 'N'
+        SET del_status = 'Y'
         WHERE bno = #{bno}
     </update>
 
