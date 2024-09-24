@@ -38,25 +38,33 @@ class BoardServiceImplTest {
 
     @Test
     void setUpDB() {
-        for (int i = 1; i <= 20; i++) {
-            BoardDto testDto = new BoardDto("title" + i, "content" + i, null, "user" + i, "target" + i, "N", "N");
+        for (int i = 1; i <= 50; i++) {
+            BoardDto testDto = new BoardDto(
+                    "임의의 비공개 게시물 제목입니다.(" + i + ")",
+                    "임의의 비공개 게시물 내용입니다.(" + i + ")",
+                    null,
+                    "user" + i,
+                    "칭찬 대상(" + i + ")",
+                    "N",
+                    "N"
+            );
             boardService.makeBoard(testDto);
         }
-        for (int i = 21; i <= 40; i++) {
-            BoardDto testDto = new BoardDto("title" + i, "content" + i, null, "user" + i, "target" + i, "Y", "N");
-            boardService.makeBoard(testDto);
-        }
-        for (int i = 41; i <= 70; i++) {
-            BoardDto testDto = new BoardDto("title" + i, "content" + i, null, "user40", "target" + i, "N", "N");
-            boardService.makeBoard(testDto);
-        }
-        for (int i = 71; i <= 100; i++) {
-            BoardDto testDto = new BoardDto("title" + i, "content" + i, null, "user1", "target" + i, "N", "N");
+        for (int i = 51; i <= 100; i++) {
+            BoardDto testDto = new BoardDto(
+                    "임의의 전체공개 게시물 제목입니다.(" + i + ")",
+                    "임의의 전체공개 게시물 내용입니다.(" + i + ")",
+                    null,
+                    "user" + i,
+                    "칭찬 대상(" + i + ")",
+                    "Y",
+                    "N"
+            );
             boardService.makeBoard(testDto);
         }
     }
 
-    @AfterEach
+//    @AfterEach
     void cleanDB() {
         boardService.removeAllBoards();
     }
