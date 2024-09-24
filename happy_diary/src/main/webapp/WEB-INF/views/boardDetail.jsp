@@ -14,9 +14,7 @@
         <ul class="visible-range"><c:if test="${param.visibility eq 'private'}">Private</c:if></ul>
         <ul class="visible-range"><c:if test="${param.visibility eq 'public'}">Public</c:if></ul>
         <br>
-        <c:if test="${param.visibility eq 'public'}">
-            <p class="subject">To. ${board.praise_target}</p>
-        </c:if>
+        <p class="subject">To. ${board.praise_target}</p>
         <p class="title">제목</p>
         <p class="title-box">${board.title}</p><br>
         <p class="content">내용</p>

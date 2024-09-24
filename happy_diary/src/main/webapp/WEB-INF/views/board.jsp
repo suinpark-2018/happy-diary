@@ -32,7 +32,6 @@
         <table class="board">
             <thead>
                 <tr>
-<%--                    <th>No.</th>--%>
                     <th>제목</th>
                     <th>To.X</th>
                     <th>작성자</th>
@@ -43,7 +42,6 @@
             <tbody>
                 <c:forEach var="board" items="${boards}">
                     <tr>
-<%--                        <td>${board.bno}</td>--%>
                         <td><a href="/board/detail?visibility=${visibility}&bno=${board.bno}&pno=${param.pno}">${board.title}</a></td>
                         <td>${board.praise_target}</td>
                         <td>${board.writer}</td>
@@ -75,5 +73,6 @@
         </div>
     </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/resources/js/nav.js"></script>
 </html>
