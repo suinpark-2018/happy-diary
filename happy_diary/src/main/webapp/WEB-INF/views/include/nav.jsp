@@ -21,7 +21,7 @@
             </li>
             <li><a href="#">게시판</a>
                 <ul>
-                    <li><a href="#">공지사항</a></li>
+                    <li><a href="/board/notice">공지사항</a></li>
                     <li><a href="#">커뮤니티</a></li>
                 </ul>
             </li>

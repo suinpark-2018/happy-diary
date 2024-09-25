@@ -172,4 +172,9 @@ public class BoardController {
         model.addAttribute("keyword", keyword);
         return "foundBoards";
     }
+
+    @GetMapping("/notice")
+    public String notice() {
+        return "notice";
+    }
 }
