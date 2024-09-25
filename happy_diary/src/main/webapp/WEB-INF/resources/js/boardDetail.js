@@ -7,7 +7,7 @@ $(document).ready(function () {
     // 댓글 수정
     $(".modify-comment").click(function (e) {
         let cno = $(this).val();
-        let content = $("#comment-" + cno).val(); // 기존 댓글 내용
+        let content = $("#comment-content-" + cno).text(); // 기존 댓글 내용
         $("#modify-comment-content").val(content);
         $("#modify-comment-form").data("cno", cno).show();
     });
@@ -36,7 +36,7 @@ $(document).ready(function () {
     // 답글 수정
     $(".modify-reply").click(function (e) {
         let cno = $(this).val();
-        let content = $("#reply-" + cno).val(); // 기존 댓글 내용
+        let content = $("#reply-content-" + cno).text(); // 기존 답글 내용
         $("#modify-reply-content").val(content);
         $("#modify-reply-form").data("cno", cno).show();
     });
