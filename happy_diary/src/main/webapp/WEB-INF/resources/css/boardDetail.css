@@ -127,7 +127,7 @@ textarea:focus {
 .submit-btn:hover {
     background-color: #218838;
 }
-.delete-comment, .delete-reply, .modify-comment, .modify-reply,#save-modified-comment, #save-modified-reply {
+.delete-comment, .delete-reply, .modify-comment, .modify-reply, #save-modified-comment, #save-modified-reply {
     margin-top: 10px;
     align-self: flex-end;
     width: 45px;
@@ -150,6 +150,7 @@ textarea:focus {
 #modify-comment-content, #modify-reply-content {
     margin-top: 15px;
     width: 600px;
+    align-content: center;
 }
 #modify-comment-form:active, #modify-reply-form:active {
     display: flex;
