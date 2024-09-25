@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>비밀번호 변경</title>
+    <title>비밀번호 변경|Happy Diary</title>
 </head>
 <link rel="stylesheet" href="/resources/css/modifyPwd.css">
 <body>

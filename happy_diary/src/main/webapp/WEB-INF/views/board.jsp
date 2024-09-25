@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>게시판|Happy Diary</title>
 </head>
 <link rel="stylesheet" href="/resources/css/nav.css">
 <link rel="stylesheet" href="/resources/css/board.css">

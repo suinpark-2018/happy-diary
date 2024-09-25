@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Login</title>
+    <title>Login|Happy Diary</title>
 </head>
 <link rel="stylesheet" href="/resources/css/login.css">
 <body>
@@ -31,7 +31,8 @@
             </div>
         </form>
         <div class="social-login">
-            <p>Or sign in with</p>
+            <p>SNS 계정 로그인 서비스는 추후 제공 예정입니다.</p>
+            <p>sign in with</p>
             <button class="btn social naver" onclick="location.href='#'">Naver</button>
             <button class="btn social kakao" onclick="location.href='#'">Kakao</button>
             <button class="btn social google" onclick="location.href='#'">Google</button>

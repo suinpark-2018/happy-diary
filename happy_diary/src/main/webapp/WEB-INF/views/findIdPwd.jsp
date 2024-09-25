@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <html>
 <head>
-    <title>아이디|비밀번호 찾기</title>
+    <title>아이디,비밀번호 찾기|Happy Diary</title>
 </head>
 <link rel="stylesheet" href="/resources/css/findIdPwd.css">
 <body>

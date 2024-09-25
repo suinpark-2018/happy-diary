@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>게시물 수정|Happy Diary</title>
 </head>
 <link rel="stylesheet" href="/resources/css/nav.css">
 <link rel="stylesheet" href="/resources/css/modifyBoard.css">

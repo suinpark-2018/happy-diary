@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Found</title>
+    <title>게시물 검색 결과|Happy Diary</title>
 </head>
 <link rel="stylesheet" href="/resources/css/nav.css">
 <link rel="stylesheet" href="/resources/css/foundBoards.css">

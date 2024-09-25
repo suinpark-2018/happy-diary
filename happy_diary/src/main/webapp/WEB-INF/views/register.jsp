@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>회원가입</title>
+    <title>Sign up|Happy Diary</title>
 </head>
 <link rel="stylesheet" href="/resources/css/register.css">
 <body>

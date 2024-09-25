@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Happy Diary</title>
+    <title>게시물|Happy Diary</title>
 </head>
 <link rel="stylesheet" href="/resources/css/nav.css">
 <link rel="stylesheet" href="/resources/css/boardDetail.css">
@@ -57,7 +57,7 @@
 
                         <!-- 댓글 수정 폼 -->
                         <div id="modify-comment-form">
-                            <textarea id="modify-comment-content"></textarea>
+                            <textarea id="modify-comment-content">${comment.content}</textarea>
                             <button type="button" id="save-modified-comment" value="${comment.cno}">저장</button>
                         </div>
 
@@ -71,13 +71,13 @@
                                     <button type="button" class="delete-reply" value="${reply.cno}">삭제</button>
                                 </c:if>
                             </div>
-                        </c:forEach>
 
-                        <!-- 답글 수정 폼 -->
-                        <div id="modify-reply-form">
-                            <textarea id="modify-reply-content"></textarea>
-                            <button type="button" id="save-modified-reply" value="${reply.cno}">저장</button>
-                        </div>
+                            <!-- 답글 수정 폼 -->
+                            <div id="modify-reply-form">
+                                <textarea id="modify-reply-content">${reply.content}</textarea>
+                                <button type="button" id="save-modified-reply" value="${reply.cno}">저장</button>
+                            </div>
+                        </c:forEach>
 
                         <!-- 답글 입력 폼 -->
                         <div class="reply-form">

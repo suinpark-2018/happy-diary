@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>게시글 작성|Happy Diary</title>
 </head>
 <link rel="stylesheet" href="/resources/css/nav.css">
 <link rel="stylesheet" href="/resources/css/createBoard.css"/>
