@@ -55,4 +55,8 @@ public interface UserService {
     // 6.1. 사용자 ID 값 제대로 전달 받았는지 확인
     // 6.2. 탈퇴처리
     boolean deleteUserAccount(String id);
+
+    // 7. 특정 회원정보 수정
+    // 변경 가능한 회원정보: 이메일, 핸드폰번호, 주소
+    boolean modifyUserInfo(UserDto userDto);
 }

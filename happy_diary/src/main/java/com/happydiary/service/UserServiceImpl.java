@@ -204,4 +204,21 @@ public class UserServiceImpl implements UserService {
         }
         return successToUpdate;
     }
+
+    // 7. 특정 회원정보 수정
+    // 변경 가능한 회원정보: 이메일, 핸드폰번호, 주소
+    @Override
+    public boolean modifyUserInfo(UserDto userDto) {
+        boolean successToUpdate = false;
+        try {
+            if (userDto != null && userDao.update(userDto) == 1) {
+                successToUpdate = true;
+            }
+        } catch (Exception e) {
+            e.getMessage();
+            e.printStackTrace();
+        }
+        return successToUpdate;
+    }
+
 }
