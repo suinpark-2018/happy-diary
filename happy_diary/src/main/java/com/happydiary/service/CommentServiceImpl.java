@@ -128,7 +128,11 @@ public class CommentServiceImpl implements CommentService {
     public boolean removeCommentOrReply(int cno) {
         boolean successToRemove = true;
         try {
-            commentDao.delete(cno);
+            if (commentDao.select(cno) != null) {
+                commentDao.delete(cno);
+            } else {
+                successToRemove = false;
+            }
         } catch (Exception e) {
             successToRemove = false;
             e.printStackTrace();

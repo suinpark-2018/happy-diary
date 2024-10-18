@@ -13,29 +13,29 @@
 
     <insert id="insert" parameterType="CommentDto">
         INSERT INTO comment (bno, parent_cno, writer, content, del_status, reg_id, reg_date)
-        VALUES (#{bno}, #{parent_cno}, #{writer}, #{content}, 'Y', #{writer}, NOW())
+        VALUES (#{bno}, #{parent_cno}, #{writer}, #{content}, 'N', #{writer}, NOW())
     </insert>
 
     <select id="select" parameterType="int" resultType="CommentDto">
         SELECT * FROM comment
-        WHERE cno = #{cno} AND del_status = 'Y'
+        WHERE cno = #{cno} AND del_status = 'N'
     </select>
 
     <select id="selectActiveAll" resultType="CommentDto">
         SELECT * FROM comment
-        WHERE del_status = 'Y'
+        WHERE del_status = 'N'
         ORDER BY reg_date DESC
     </select>
 
     <select id="selectAllComment" parameterType="int" resultType="CommentDto">
         SELECT * FROM comment
-        WHERE bno = #{bno} AND del_status = 'Y'
+        WHERE bno = #{bno} AND del_status = 'N'
         ORDER BY reg_date DESC
     </select>
 
     <select id="selectAllReply" parameterType="int" resultType="CommentDto">
         SELECT * FROM comment
-        WHERE parent_cno = #{cno} AND del_status = 'Y'
+        WHERE parent_cno = #{cno} AND del_status = 'N'
         ORDER BY reg_date DESC
     </select>
 
@@ -47,7 +47,7 @@
 
     <update id="delete" parameterType="int">
         UPDATE comment
-        SET del_status = 'N'
+        SET del_status = 'N', del_date = NOW()
         WHERE cno = #{cno} OR parent_cno = #{cno}
     </update>
 

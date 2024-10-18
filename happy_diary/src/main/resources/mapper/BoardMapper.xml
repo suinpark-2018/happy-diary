@@ -104,7 +104,7 @@
 
     <update id="delete" parameterType="Integer">
         UPDATE board
-        SET del_status = 'Y'
+        SET del_status = 'Y', del_date = NOW()
         WHERE bno = #{bno}
     </update>
 
