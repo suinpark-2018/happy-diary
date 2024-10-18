@@ -27,7 +27,7 @@
             <button type="submit" class="btn primary">Sign In</button>
             <div class="additional-options">
                 <a href="/find/idAndPwd" class="forgot-link">Forgot ID/Password?</a>
-                <a href="/register/form" class="signup-link">Sign Up</a>
+                <a href="/register/verification" class="signup-link">Sign Up</a>
             </div>
         </form>
         <div class="social-login">

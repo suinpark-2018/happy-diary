@@ -12,7 +12,7 @@ body {
     text-align: center;
 }
 .wrapper {
-    max-width: 800px;
+    width: 60%;
     margin: 20px auto;
     background-color: #ffffff;
     padding: 25px;
@@ -22,21 +22,21 @@ body {
 .wrapper ul {
     text-align: right;
     color: gray;
-    margin-left: 30px;
+    margin-right: 20px;
 }
 .view_cnt {
     color: black;
     font-size: 16px;
-    margin: 40px 0;
+    margin: 20px 0;
 }
 p {
-    margin: 10px 5px;
+    margin: 10px 20px;
     white-space: pre-wrap;
 }
 .subject {
     font-size: 20px;
     font-weight: bold;
-    margin: 20px 5px 40px;
+    margin: 20px 20px 40px;
 }
 .title, .content {
     font-size: 20px;
@@ -47,44 +47,53 @@ p {
     border: solid 1px gray;
     padding: 10px;
 }
+.comment-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 20px;
+}
 span {
     font-size: 16px;
-    width: 300px;
-    margin-bottom: 15px;
     margin-right: 20px;
-    padding: 10px 15px;
-    background-color: #f8f9fa;
-    border-radius: 3px;
-    border: 1px solid #e9ecef;
+    padding: 10px 20px;
 }
 .actions {
     text-align: right;
-    margin-top: 50px;
+    margin-top: 40px;
+    margin-right: 20px;
+}
+button {
+    width: 75px;
+    height: 35px;
+    padding: 10px;
+    margin-left: 10px;
+    font-size: 14px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 .actions a {
     text-decoration: none;
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: white;
-    border-radius: 6px;
-    margin-left: 10px;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
 }
-.actions a:hover {
-    background-color: #0056b3;
+#list-btn, #cancel-btn {
+    background-color: #6c757d;
+}
+#list-btn:hover, #cancel-btn:hover {
+    background-color: #5a6268;
 }
 .comments {
     margin-top: 40px;
 }
 .comment {
-    margin-bottom: 20px;
+    margin: 20px;
     padding: 15px;
     background-color: #f8f9fa;
     border-radius: 6px;
     border: 1px solid #e9ecef;
 }
 .reply {
+    width: 95%;
     margin-top: 15px;
     margin-left: 20px;
     padding: 10px;
@@ -98,10 +107,9 @@ span {
     flex-direction: column;
 }
 textarea {
-    width: 100%;
-    padding: 12px;
-    margin-top: 20px;
-    margin-right: 20px;
+    width: 95%;
+    padding: 10px;
+    margin: 20px 10px 0 20px;
     font-size: 16px;
     border: 1px solid #dee2e6;
     border-radius: 5px;
@@ -113,14 +121,17 @@ textarea:focus {
     outline: none;
 }
 .submit-btn {
-    margin-top: 10px;
+    width: 75px;
+    height: 35px;
     align-self: flex-end;
-    padding: 10px 20px;
+    margin-top: 10px;
+    float: right;
+    margin-right: 20px;
     background-color: #28a745;
     color: white;
     border: none;
     border-radius: 6px;
-    font-size: 16px;
+    font-size: 14px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }

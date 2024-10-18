@@ -25,7 +25,7 @@
                 </tr>
                 <tr>
                     <td><label for="writer">작성자</label></td>
-                    <td><input type="text" id="writer" name="writer" value=${userId} readonly></td>
+                    <td><input type="text" id="writer" name="writer" value="${userId}" readonly></td>
                 </tr>
                 <tr>
                     <td>공개범위</td>
@@ -36,8 +36,10 @@
                 </tr>
                 <input type="hidden" name="is_notice" value="N">
             </table>
-            <button type="submit">SUBMIT</button>
-            <button type="button" onclick="location.href='/board/list?visibility=${visibility}&pno=1'">CANCEL</button>
+            <div class="actions">
+                <button type="button" id="cancel-btn" onclick="location.href='/board/list?visibility=${visibility}&pno=1'">CANCEL</button>
+                <button type="submit" id="submit-btn">SUBMIT</button>
+            </div>
         </form>
     </div>
 </body>

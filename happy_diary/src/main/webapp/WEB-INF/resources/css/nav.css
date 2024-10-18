@@ -64,13 +64,15 @@ a {
     margin-right: 30px;
 }
 
-#user-name {
+.happy, .user-name {
     color: white;
     text-decoration: none;
     margin-right: 15px;
     font-weight: bold;
 }
-
+.user-name {
+    color: yellow;
+}
 button {
     background-color: #f44336;
     color: white;

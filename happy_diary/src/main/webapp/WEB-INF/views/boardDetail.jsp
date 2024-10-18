@@ -23,11 +23,17 @@
         <ul class="view_cnt">조회수: ${board.view_cnt}</ul>
 
         <div class="actions">
-            <a href="/board/list?visibility=${param.visibility}&pno=${param.pno}">목록</a>
+            <button type="button" id="list-btn">
+                <a href="/board/list?visibility=${param.visibility}&pno=${param.pno}">목록</a>
+            </button>
+
             <c:if test="${isAuthor}">
-                <a href="/board/modify?visibility=${param.visibility}&bno=${board.bno}&pno=${param.pno}">수정</a>
-                <a href="/board/delete?visibility=${param.visibility}&bno=${board.bno}&pno=${param.pno}"
-                   onclick="return confirmDelete()">삭제</a>
+                <button type="button" id="cancel-btn">
+                    <a href="/board/delete?visibility=${param.visibility}&bno=${board.bno}&pno=${param.pno}" onclick="return confirmDelete()">취소</a>
+                </button>
+                <button type="button" id="modify-btn">
+                    <a href="/board/modify?visibility=${param.visibility}&bno=${board.bno}&pno=${param.pno}">수정</a>
+                </button>
             </c:if>
         </div>
 
@@ -44,7 +50,7 @@
 
         <!-- 댓글 목록 -->
         <div class="comments">
-            <h3>댓글</h3>
+            <p class="comment-title">댓글</p>
             <c:forEach var="comment" items="${comments}">
                 <c:if test="${comment.parent_cno == null}">
                     <div id="comment-${comment.cno}" class="comment">

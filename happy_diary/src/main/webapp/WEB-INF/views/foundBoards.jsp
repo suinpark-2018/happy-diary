@@ -18,9 +18,8 @@
         <table class="board">
             <thead>
             <tr>
-                <th>No.</th>
-                <th>제목</th>
                 <th>To.X</th>
+                <th>제목</th>
                 <th>작성자</th>
                 <th>작성일</th>
                 <th>조회수</th>
@@ -29,9 +28,8 @@
             <tbody>
             <c:forEach var="board" items="${foundBoards}">
                 <tr>
-                    <td>${board.bno}</td>
-                    <td><a href="/board/detail?visibility=${visibility}&bno=${board.bno}&pno=${pno}">${board.title}</a></td>
                     <td>${board.praise_target}</td>
+                    <td><a href="/board/detail?visibility=${visibility}&bno=${board.bno}&pno=${pno}">${board.title}</a></td>
                     <td>${board.writer}</td>
                     <td><fmt:formatDate value="${board.reg_date}" pattern="yyyy-MM-dd" /></td>
                     <td>${board.view_cnt}</td>

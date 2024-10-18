@@ -7,35 +7,36 @@
     <div id="menu">
         <ul>
             <li><a href="/board/home" class="app-name">HAPPY DIARY</a></li>
-            <li><a href="/board/list?visibility=private&pno=1">개인 공간</a>
+            <li><a href="/board/list?visibility=private&pno=1">PRIVATE</a>
                 <ul>
-                    <li><a href="/board/list?visibility=private&pno=1">나에게</a></li>
-                    <li><a href="#">나의 일기</a></li>
+                    <li><a href="/board/list?visibility=private&pno=1">To Me</a></li>
+                    <li><a href="#">My Diary</a></li>
                 </ul>
             </li>
-            <li><a href="/board/list?visibility=public&pno=1">공용 공간</a>
+            <li><a href="/board/list?visibility=public&pno=1">PUBLIC</a>
                 <ul>
-                    <li><a href="/board/list?visibility=public&pno=1">너에게</a></li>
-                    <li><a href="#">X의 일기</a></li>
+                    <li><a href="/board/list?visibility=public&pno=1">To You</a></li>
+                    <li><a href="#">X's Diary</a></li>
                 </ul>
             </li>
-            <li><a href="#">게시판</a>
+            <li><a href="#">BOARD</a>
                 <ul>
-                    <li><a href="/board/notice">공지사항</a></li>
-                    <li><a href="#">커뮤니티</a></li>
+                    <li><a href="/board/notice">Notice</a></li>
+                    <li><a href="#">Community</a></li>
                 </ul>
             </li>
-            <li><a href="#">설정</a>
+            <li><a href="/userInfo/modify">SETTING</a>
                 <ul>
-                    <li><a href="#">회원정보 수정</a></li>
-                    <li><a href="#" id="logout">로그아웃</a></li>
-                    <li><a href="#" id="accountDeletion">회원탈퇴</a></li>
+                    <li><a href="/userInfo/modify">Edit</a></li>
+                    <li><a href="#" id="logout">Logout</a></li>
+                    <li><a href="/delete/account" id="accountDeletion">Unsubscribe</a></li>
                 </ul>
             </li>
         </ul>
         <div class="user-info">
             <ul>
-                <a href="#" id="user-name">HAPPY ${sessionScope.userName}</a>
+                <a href="#" class="happy">HAPPY</a>
+                <a href="#" class="user-name">${sessionScope.userName}</a>
             </ul>
         </div>
     </div>

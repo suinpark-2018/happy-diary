@@ -26,28 +26,29 @@
                 <tr>
                     <td>공개범위</td>
                     <c:if test="${board.is_public eq 'Y'}">
-                        <td><label><input type="radio" name="is_public" value="Y" checked required>Public</label></td>
-                        <td><label><input type="radio" name="is_public" value="N" required>Private</label></td>
+                        <td>
+                            <label><input type="radio" name="is_public" value="Y" checked required>전체공개</label>
+                            <label><input type="radio" name="is_public" value="N" required>비공개</label>
+                        </td>
                     </c:if>
                     <c:if test="${board.is_public eq 'N'}">
                         <td>
-                            <label><input type="radio" name="is_public" value="Y" required>Public</label>
-                            <label><input type="radio" name="is_public" value="N" checked required>Private</label>
+                            <label><input type="radio" name="is_public" value="Y" required>전체공개</label>
+                            <label><input type="radio" name="is_public" value="N" checked required>비공개</label>
                         </td>
                     </c:if>
                 </tr>
                 <tr>
                     <td colspan="3" class="actions">
-                        <button type="submit">SAVE</button>
-                        <button type="button" class="cancel" onclick="location.href='/board/detail?visibility=${param.visibility}&bno=${board.bno}&pno=${param.pno}'">취소</button>
-                        <button type="button" onclick="location.href='/board/list?visibility=${param.visibility}&pno=${param.pno}'">목록</button>
+                        <button type="button" id="cancel-btn" onclick="location.href='/board/detail?visibility=${param.visibility}&bno=${board.bno}&pno=${param.pno}'">CANCEL</button>
+                        <button type="button" id="list-btn" onclick="location.href='/board/list?visibility=${param.visibility}&pno=${param.pno}'">LIST</button>
+                        <button type="submit" id="submit-btn">SAVE</button>
                     </td>
                 </tr>
             </table>
         </form>
     </div>
 </body>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/resources/js/nav.js"></script>
 </html>
