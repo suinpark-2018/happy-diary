@@ -58,7 +58,7 @@ public class UserDto {
     String up_id;
     String up_date;
 
-    // 회원가입용 생성자
+    // 회원가입 시 활용
     public UserDto(String id, String pwd, String name, String email, String phone_num, String birth, String gender, String address) {
         this.id = id;
         this.pwd = pwd;
@@ -67,6 +67,14 @@ public class UserDto {
         this.phone_num = phone_num;
         this.birth = birth;
         this.gender = gender;
+        this.address = address;
+    }
+
+    // 회원정보 변경 시 활용
+    public UserDto(String id, String email, String phone_num, String address) {
+        this.id = id;
+        this.email = email;
+        this.phone_num = phone_num;
         this.address = address;
     }
 
