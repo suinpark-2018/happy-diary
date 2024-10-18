@@ -42,9 +42,10 @@
     </select>
 
     <!-- 특정 회원 정보 수정 -->
+    <!-- 비밀번호의 경우 유출의 위험성이 있음에 따라 변경이력은 DB에 따로 저장하지 않음 -->
     <update id="update" parameterType="UserDto">
         UPDATE user
-        SET pwd = #{pwd}, email = #{email}, phone_num = #{phone_num}, address = #{address}, up_id = #{id}, up_date = NOW()
+        SET pwd = #{pwd}, email = #{email}, phone_num = #{phone_num}, up_id = #{id}, up_date = NOW()
         WHERE id = #{id}
     </update>
 
