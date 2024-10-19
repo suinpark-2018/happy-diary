@@ -63,6 +63,7 @@ span {
     margin-right: 20px;
 }
 button {
+    background-color: #007bff;
     width: 75px;
     height: 35px;
     padding: 10px;
@@ -73,13 +74,16 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
+button:hover {
+    background-color: #0056b3;
+}
 .actions a {
     text-decoration: none;
 }
-#list-btn, #cancel-btn {
+#list-btn, #delete-btn {
     background-color: #6c757d;
 }
-#list-btn:hover, #cancel-btn:hover {
+#list-btn:hover, #delete-btn:hover {
     background-color: #5a6268;
 }
 .comments {

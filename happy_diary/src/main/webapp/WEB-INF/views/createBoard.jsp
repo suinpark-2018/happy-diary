@@ -37,8 +37,8 @@
                 <input type="hidden" name="is_notice" value="N">
             </table>
             <div class="actions">
-                <button type="button" id="cancel-btn" onclick="location.href='/board/list?visibility=${visibility}&pno=1'">CANCEL</button>
-                <button type="submit" id="submit-btn">SUBMIT</button>
+                <button type="button" id="cancel-btn" onclick="location.href='/board/list?visibility=${visibility}&pno=1'">취소</button>
+                <button type="submit" id="submit-btn">저장</button>
             </div>
         </form>
     </div>

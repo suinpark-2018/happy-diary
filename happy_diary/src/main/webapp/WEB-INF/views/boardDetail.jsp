@@ -28,8 +28,8 @@
             </button>
 
             <c:if test="${isAuthor}">
-                <button type="button" id="cancel-btn">
-                    <a href="/board/delete?visibility=${param.visibility}&bno=${board.bno}&pno=${param.pno}" onclick="return confirmDelete()">취소</a>
+                <button type="button" id="delete-btn">
+                    <a href="/board/delete?visibility=${param.visibility}&bno=${board.bno}&pno=${param.pno}" onclick="return confirmDelete()">삭제</a>
                 </button>
                 <button type="button" id="modify-btn">
                     <a href="/board/modify?visibility=${param.visibility}&bno=${board.bno}&pno=${param.pno}">수정</a>

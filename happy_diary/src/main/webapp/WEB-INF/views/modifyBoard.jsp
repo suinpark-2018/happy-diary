@@ -40,9 +40,9 @@
                 </tr>
                 <tr>
                     <td colspan="3" class="actions">
-                        <button type="button" id="cancel-btn" onclick="location.href='/board/detail?visibility=${param.visibility}&bno=${board.bno}&pno=${param.pno}'">CANCEL</button>
-                        <button type="button" id="list-btn" onclick="location.href='/board/list?visibility=${param.visibility}&pno=${param.pno}'">LIST</button>
-                        <button type="submit" id="submit-btn">SAVE</button>
+                        <button type="button" id="list-btn" onclick="location.href='/board/list?visibility=${param.visibility}&pno=${param.pno}'">목록</button>
+                        <button type="button" id="cancel-btn" onclick="location.href='/board/detail?visibility=${param.visibility}&bno=${board.bno}&pno=${param.pno}'">취소</button>
+                        <button type="submit" id="submit-btn">저장</button>
                     </td>
                 </tr>
             </table>

@@ -19,7 +19,7 @@
                     <li><a href="#">X's Diary</a></li>
                 </ul>
             </li>
-            <li><a href="#">BOARD</a>
+            <li><a href="/board/notice">BOARD</a>
                 <ul>
                     <li><a href="/board/notice">Notice</a></li>
                     <li><a href="#">Community</a></li>
