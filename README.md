@@ -18,7 +18,22 @@
 ## 📁 ERD
 ### 3 Tables
 #### 📌 상세 구조
-<img width="1135" alt="ERD" src="https://github.com/user-attachments/assets/a22f7020-be63-4b2e-8079-d330695ccbdf">
+<img width="1290" alt="ERD" src="https://github.com/user-attachments/assets/36433aeb-b66e-4345-b909-40f13e230b37">
+
+#### 회원 테이블
+<img width="500" alt="user" src="https://github.com/user-attachments/assets/eeffb2d8-c4c5-42c9-bb8a-cc6bd71898cd">
+
+#### 게시판 테이블
+<img width="500" alt="board" src="https://github.com/user-attachments/assets/e1fa16b1-b6e8-4610-baa4-c0869f1e6230">
+
+#### 댓글 테이블
+<img width="500" alt="comment" src="https://github.com/user-attachments/assets/8b8447e9-1aac-4680-a2c8-2a58d795d96f">
+
+#### 회원정보 수정 테이블
+<img width="500" alt="user_info_chg_hist" src="https://github.com/user-attachments/assets/3f7090b2-b924-4ebb-916f-ea6a0e9ca962">
+
+#### 변경이력 코드 테이블
+<img width="500" alt="chg_hist_code" src="https://github.com/user-attachments/assets/3fbc4bf1-b0f7-4b11-b658-038b8d7323da">
 
 </br></br>
 
@@ -33,7 +48,7 @@
   <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <br>
   <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
   <img src="https://img.shields.io/badge/mybatis-EF2D5E?style=for-the-badge&logo=mybatis&logoColor=white">
-    <img src="https://img.shields.io/badge/apachetomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=white">
+  <img src="https://img.shields.io/badge/apachetomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=white">
   <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
   <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
 </div> 
@@ -69,51 +84,56 @@ happy_diary
       ├── main
       │   ├── java
       │   │   └── com
-      │   │   └── happydiary
-      │   │       ├── common
-      │   │       │   ├── exception
-      │   │       │   │   └── GlobalExceptionHandler.java
-      │   │       │   └── validation
-      │   │       │       ├── ValidationGroups.java
-      │   │       │       └── ValidationSequence.java
-      │   │       ├── controller
-      │   │       │   ├── BoardController.java
-      │   │       │   ├── CommentController.java
-      │   │       │   ├── FindIdPwdController.java
-      │   │       │   ├── HomeController.java
-      │   │       │   ├── LoginController.java
-      │   │       │   ├── SignUpController.java
-      │   │       ├── dao
-      │   │       │   ├── BoardDao.java
-      │   │       │   ├── BoardDaoImpl.java
-      │   │       │   ├── CommentDao.java
-      │   │       │   ├── CommentDaoImpl.java
-      │   │       │   ├── UserDao.java
-      │   │       │   └── UserDaoImpl.java
-      │   │       ├── dto
-      │   │       │   ├── BoardDto.java
-      │   │       │   ├── CommentDto.java
-      │   │       │   ├── PageRequestDto.java
-      │   │       │   ├── PageResponseDto.java
-      │   │       │   └── UserDto.java
-      │   │       └── service
-      │   │           ├── BoardService.java
-      │   │           ├── BoardServiceImpl.java
-      │   │           ├── CommentService.java
-      │   │           ├── CommentServiceImpl.java
-      │   │           ├── UserService.java
-      │   │           ├── UserServiceImpl.java
-      │   │           └── mail
-      │   │               ├── MailHandler.java
-      │   │               ├── MailService.java
-      │   │               ├── MockMailSender.java
-      │   │               └── TempKey.java
+      │   │       └── happydiary
+      │   │           ├── common
+      │   │           │   ├── exception
+      │   │           │   │   └── GlobalExceptionHandler.java
+      │   │           │   └── validation
+      │   │           │       ├── ValidationGroups.java
+      │   │           │       └── ValidationSequence.java
+      │   │           ├── controller
+      │   │           │   ├── AccountDeletionController.java
+      │   │           │   ├── BoardController.java
+      │   │           │   ├── CommentController.java
+      │   │           │   ├── FindIdPwdController.java
+      │   │           │   ├── HomeController.java
+      │   │           │   ├── LogController.java
+      │   │           │   ├── LoginController.java
+      │   │           │   ├── SignUpController.java
+      │   │           │   └── UserInfoController.java
+      │   │           ├── dao
+      │   │           │   ├── BoardDao.java
+      │   │           │   ├── BoardDaoImpl.java
+      │   │           │   ├── CommentDao.java
+      │   │           │   ├── CommentDaoImpl.java
+      │   │           │   ├── UserDao.java
+      │   │           │   └── UserDaoImpl.java
+      │   │           ├── dto
+      │   │           │   ├── BoardDto.java
+      │   │           │   ├── CommentDto.java
+      │   │           │   ├── PageRequestDto.java
+      │   │           │   ├── PageResponseDto.java
+      │   │           │   └── UserDto.java
+      │   │           └── service
+      │   │               ├── BoardService.java
+      │   │               ├── BoardServiceImpl.java
+      │   │               ├── CommentService.java
+      │   │               ├── CommentServiceImpl.java
+      │   │               ├── LogService.java      
+      │   │               ├── UserService.java
+      │   │               ├── UserServiceImpl.java
+      │   │               └── mail
+      │   │                   ├── MailHandler.java
+      │   │                   ├── MailService.java
+      │   │                   ├── MockMailSender.java
+      │   │                   └── TempKey.java
       │   ├── resources
-      │   │   ├── application.properties
       │   │   ├── mapper
       │   │   │   ├── BoardMapper.xml
       │   │   │   ├── CommentMapper.xml
       │   │   │   └── UserMapper.xml
+      │   │   ├── application.properties
+      │   │   ├── logback-spring.xml
       │   │   └── mybatis-config.xml
       │   └── webapp
       │       └── WEB-INF
@@ -130,23 +150,32 @@ happy_diary
       │           │   │   ├── main.css
       │           │   │   ├── modifyBoard.css
       │           │   │   ├── modifyPwd.css
+      │           │   │   ├── modifyUserInfo.css
       │           │   │   ├── nav.css
+      │           │   │   ├── notice.css
       │           │   │   └── register.css
       │           │   ├── img
+      │           │   │   ├── kakao.png
+      │           │   │   ├── kakao_login_logo.png
+      │           │   │   ├── main.webp
+      │           │   │   ├── naver.png
+      │           │   │   ├── naver_login_logo.png
+      │           │   │   └── notice.png
       │           │   └── js
       │           │       ├── boardDetail.js
       │           │       ├── findIdPwd.js
       │           │       ├── identityVerification.js
       │           │       ├── login.js
       │           │       ├── main.js
-      │           │       └── nav.js
+      │           │       ├── modifyUserInfo.js
+      │           │       ├── nav.js
       │           │       └── register.js
       │           ├── spring
       │           │   ├── appServlet
       │           │   │   └── servlet-context.xml
       │           │   └── root-context.xml
       │           ├── views
-      │           │   └── include
+      │           │   ├── include
       │           │   │   └── nav.jsp
       │           │   ├── board.jsp
       │           │   ├── boardDetail.jsp
@@ -159,6 +188,8 @@ happy_diary
       │           │   ├── main.jsp
       │           │   ├── modifyBoard.jsp
       │           │   ├── modifyPwd.jsp
+      │           │   ├── modifyUserInfo.jsp    
+      │           │   ├── notice.jsp    
       │           │   └── register.jsp
       │           └── web.xml
       └── test
