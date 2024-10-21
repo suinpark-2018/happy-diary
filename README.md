@@ -19,7 +19,7 @@
 
 아래의 링크를 통해 웹사이트를 직접 확인하실 수 있습니다.
 <br>
-[Happy Diary Website](43.200.214.31:8080)
+[Happy Diary Website](http://43.200.214.31:8080)
 
 </br>
 
