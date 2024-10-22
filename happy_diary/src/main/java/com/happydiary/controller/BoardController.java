@@ -29,7 +29,12 @@ public class BoardController {
 
     // 게시판 첫 화면으로 이동
     @GetMapping("/home")
-    public String home() {
+    public String home(HttpServletRequest request, Model model) {
+        HttpSession session = request.getSession();
+        String id = (String) session.getAttribute("userId");
+
+        List<BoardDto> boards = boardService.findByVisibleScope(1, "public", id);
+        model.addAttribute("boards", boards);
         return "main";
     }
 
@@ -173,8 +178,10 @@ public class BoardController {
         return "foundBoards";
     }
 
+    // 공지 게시판
     @GetMapping("/notice")
     public String notice() {
         return "notice";
     }
+
 }
