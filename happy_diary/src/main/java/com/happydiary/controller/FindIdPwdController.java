@@ -57,7 +57,7 @@ public class FindIdPwdController {
         String selectedId = userService.findIdByEmail(email);
 
         try {
-            if (!selectedId.isEmpty() || !selectedId.isBlank()) {
+            if (!selectedId.isEmpty() || !selectedId.equals(" ")) {
                 if (userService.sendVerificationEmail(email, mailKey)) {
                     session.setAttribute("mailKey", mailKey); // 세션에 인증번호 저장
                     session.setMaxInactiveInterval(60); // 세션 만료 시간 설정(1분)
@@ -137,7 +137,7 @@ public class FindIdPwdController {
         // 사용자가 입력한 이메일로 조회된 사용자의 아이디와 일치하는 경우
         // 인증번호 전송
         try {
-            if ((!selectedId.isEmpty() || !selectedId.isBlank()) && id.equals(selectedId)) {
+            if ((!selectedId.isEmpty() || !selectedId.equals(" ")) && id.equals(selectedId)) {
                 if (userService.sendVerificationEmail(email, mailKey)) {
                     session.setAttribute("mailKey", mailKey); // 세션에 인증번호 저장
                     session.setMaxInactiveInterval(60); // 세션 만료 시간 설정(1분)

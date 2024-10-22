@@ -45,7 +45,7 @@ public class SignUpController {
 
         try {
             String selectedId = userService.findIdByEmail(email);
-            if (selectedId.isEmpty() || selectedId.isBlank()) {
+            if (selectedId.isEmpty() || selectedId.equals(" ")) {
                 if (userService.sendVerificationEmail(email, mailKey)) {
                     session.setAttribute("mailKey", mailKey); // 세션에 인증번호 저장
                     session.setMaxInactiveInterval(60); // 세션 만료 시간 설정(1분)

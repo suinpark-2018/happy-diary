@@ -234,7 +234,7 @@ class UserServiceImplTest {
         String inputEmail = "wrongEmail@spring.co.kr";
         String expectedId = "user1";
 
-        assertTrue(userService.findIdByEmail(inputEmail).isBlank());
+        assertTrue(userService.findIdByEmail(inputEmail).equals(" "));
         assertNotEquals(expectedId, userService.findIdByEmail(inputEmail));
     }
 

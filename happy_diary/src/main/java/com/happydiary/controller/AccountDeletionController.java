@@ -20,7 +20,7 @@ public class AccountDeletionController {
         HttpSession session = request.getSession();
         String id = (String) session.getAttribute("userId");
 
-        if (!id.isEmpty() || !id.isBlank()) {
+        if (!id.isEmpty() || !id.equals(" ")) {
             userService.deleteUserAccount(id);
             session.invalidate();
         }

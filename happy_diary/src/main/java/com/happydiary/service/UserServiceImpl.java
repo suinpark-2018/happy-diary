@@ -194,7 +194,7 @@ public class UserServiceImpl implements UserService {
     public boolean deleteUserAccount(String id) {
         boolean successToUpdate = false;
         try {
-            if ((!id.isEmpty() || !id.isBlank()) && (userDao.select(id) != null)) {
+            if ((!id.isEmpty() || !id.equals(" ")) && (userDao.select(id) != null)) {
                 userDao.updateDelStatus(id);
                 successToUpdate = true;
             }

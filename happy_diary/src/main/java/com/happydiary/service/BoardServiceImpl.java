@@ -97,7 +97,7 @@ public class BoardServiceImpl implements BoardService {
         try {
             if (pno > 0
                 && (option.equals("title") || option.equals("writer") || option.equals("title_or_writer"))
-                && !keyword.isEmpty() && !keyword.isBlank()) {
+                && !keyword.isEmpty()) {
                 foundBoards = boardDao.selectByTitleOrWriter(pageRequestDto, option, keyword);
             } else {
                 throw new IllegalArgumentException("This is incorrect pno or option or keyword.");
@@ -154,7 +154,7 @@ public class BoardServiceImpl implements BoardService {
     public int getNumberOfFoundBoardsByTarget(String praise_target) {
         int result = 0;
         try {
-            if (!praise_target.isEmpty() && !praise_target.isBlank()) {
+            if (!praise_target.isEmpty() && !praise_target.equals(" ")) {
                 result = boardDao.countSelectedRowByTarget(praise_target);
             } else {
                 throw new IllegalArgumentException("This is incorrect praise_target");
@@ -171,7 +171,7 @@ public class BoardServiceImpl implements BoardService {
     public List<BoardDto> findByPraiseTarget(int pno, String praise_target) {
         List<BoardDto> foundBoards = new ArrayList<>();
         try {
-            if (pno > 0 && !praise_target.isEmpty() && !praise_target.isBlank()) {
+            if (pno > 0 && !praise_target.isEmpty() && !praise_target.equals(" ")) {
                 PageRequestDto pageRequestDto = new PageRequestDto(pno, 10);
                 foundBoards = boardDao.selectByTarget(pageRequestDto, praise_target);
             } else {

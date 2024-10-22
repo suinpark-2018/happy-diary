@@ -68,7 +68,7 @@ public class LoginController {
         session.setAttribute("userId", id);
         session.setAttribute("userName", name);
 
-        return "main";
+        return "redirect:/board/home";
     }
 
     @GetMapping("/out")
