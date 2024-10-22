@@ -10,13 +10,13 @@
             <li><a href="/board/list?visibility=private&pno=1">PRIVATE</a>
                 <ul>
                     <li><a href="/board/list?visibility=private&pno=1">To Me</a></li>
-                    <li><a href="#">My Diary</a></li>
+                    <li><a href="#">My Diaries</a></li>
                 </ul>
             </li>
             <li><a href="/board/list?visibility=public&pno=1">PUBLIC</a>
                 <ul>
                     <li><a href="/board/list?visibility=public&pno=1">To You</a></li>
-                    <li><a href="#">X's Diary</a></li>
+                    <li><a href="#">X's Diaries</a></li>
                 </ul>
             </li>
             <li><a href="/board/notice">BOARD</a>
@@ -25,11 +25,11 @@
                     <li><a href="#">Community</a></li>
                 </ul>
             </li>
-            <li><a href="/userInfo/modify">SETTING</a>
+            <li><a href="/userInfo/modify">SETTINGS</a>
                 <ul>
-                    <li><a href="/userInfo/modify">Edit</a></li>
+                    <li><a href="/userInfo/modify">User Info</a></li>
                     <li><a href="#" id="logout">Logout</a></li>
-                    <li><a href="/delete/account" id="accountDeletion">Unsubscribe</a></li>
+                    <li><a href="/delete/account" id="accountDeletion">Delete Account</a></li>
                 </ul>
             </li>
         </ul>

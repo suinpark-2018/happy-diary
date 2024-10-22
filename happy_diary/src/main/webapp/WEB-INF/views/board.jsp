@@ -10,8 +10,8 @@
 <body>
     <jsp:include page="/WEB-INF/views/include/nav.jsp"/>
     <div class="wrapper">
-        <c:if test="${visibility eq 'private'}"><h1>Private Space</h1></c:if>
-        <c:if test="${visibility eq 'public'}"><h1>Shared Space</h1></c:if>
+        <c:if test="${param.visibility eq 'private'}"><h1>Private Space</h1></c:if>
+        <c:if test="${param.visibility eq 'public'}"><h1>Shared Space</h1></c:if>
 
         <div class="search-wrapper">
             <form action="/board/find" method="GET">

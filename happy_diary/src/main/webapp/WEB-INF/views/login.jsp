@@ -3,7 +3,7 @@
 <head>
     <title>Login|Happy Diary</title>
 </head>
-<link rel="stylesheet" href="/resources/css/login.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login.css">
 <body>
     <div class="login-container">
         <a href="/" class="additional-options">< Home</a>
