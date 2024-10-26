@@ -4,7 +4,6 @@
     padding: 20px;
 }
 
-/* 왼쪽, 메인, 오른쪽 영역 스타일 */
 .left-side, .main-board, .right-side {
     width: 30%;
     padding: 15px;
@@ -34,20 +33,19 @@
     margin-top: 45%;
     font-size: 16px;
 }
-/* 테이블 스타일 */
 .latest-posts {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
 }
-
 .latest-posts td {
     border: 1px solid #dddddd;
     text-align: center;
     padding: 8px;
 }
-
-/* 반응형 디자인 */
+#board-title {
+    color: black;
+}
 @media (max-width: 768px) {
     .container {
         flex-direction: column;

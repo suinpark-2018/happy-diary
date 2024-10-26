@@ -35,7 +35,7 @@
                 <c:forEach var="board" items="${boards}" begin="0" end="5">
                     <tr>
                         <td>${board.writer}</td>
-                        <td><a href="/board/detail?visibility=public&bno=${board.bno}&pno=1">${board.title}</a></td>
+                        <td><a href="/board/detail?visibility=public&bno=${board.bno}&pno=1" id="board-title">${board.title}</a></td>
                     </tr>
                 </c:forEach>
             </table>
