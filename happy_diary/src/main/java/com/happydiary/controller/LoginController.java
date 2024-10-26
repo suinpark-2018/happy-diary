@@ -1,6 +1,5 @@
 package com.happydiary.controller;
 
-
 import com.happydiary.common.validation.ValidationGroups;
 import com.happydiary.dto.UserDto;
 import com.happydiary.service.UserServiceImpl;
@@ -29,6 +28,15 @@ public class LoginController {
     @GetMapping("/form")
     public String moveToLoginPage() {
         return "login";
+    }
+
+    @GetMapping("/in/test")
+    public String testPage(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        session.setAttribute("loginStatus", "Y");
+        session.setAttribute("userId", "test");
+        session.setAttribute("userName", userService.getUserInfo("test").getName());
+        return "redirect:/board/home";
     }
 
     @PostMapping("in")
